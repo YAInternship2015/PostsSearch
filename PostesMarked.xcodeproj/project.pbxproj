@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE2918811BB7239A0082E98D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EE2918801BB7239A0082E98D /* .gitignore */; settings = {ASSET_TAGS = (); }; };
 		EE50BB961BB71F1C00F4440E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB951BB71F1C00F4440E /* main.m */; };
 		EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB981BB71F1C00F4440E /* AppDelegate.m */; };
 		EE50BB9C1BB71F1C00F4440E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB9B1BB71F1C00F4440E /* ViewController.m */; };
@@ -41,6 +42,7 @@
 		3CCF3C140EB20FC5A6D6F486 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94340FC0130589E010EE0CF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE05E38B83FE7163292E3951 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EE2918801BB7239A0082E98D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EE50BB911BB71F1B00F4440E /* PostesMarked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostesMarked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE50BB951BB71F1C00F4440E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE50BB971BB71F1C00F4440E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				EE50BBCA1BB71F5500F4440E /* Podfile */,
+				EE2918801BB7239A0082E98D /* .gitignore */,
 				EE50BB931BB71F1B00F4440E /* PostesMarked */,
 				EE50BBB01BB71F1C00F4440E /* PostesMarkedTests */,
 				EE50BBBB1BB71F1C00F4440E /* PostesMarkedUITests */,
@@ -278,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE2918811BB7239A0082E98D /* .gitignore in Resources */,
 				EE50BBA71BB71F1C00F4440E /* LaunchScreen.storyboard in Resources */,
 				EE50BBA41BB71F1C00F4440E /* Assets.xcassets in Resources */,
 				EE50BBCB1BB71F5500F4440E /* Podfile in Resources */,
