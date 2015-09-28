@@ -6,13 +6,13 @@
 //  Copyright © 2015 Konstantin Kolontay. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ILTMainViewController.h"
 
-@interface ViewController ()
+@interface ILTMainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ILTMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
