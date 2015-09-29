@@ -1,5 +1,5 @@
 //
-//  ILTLoginViewController.h
+//  ILTLoginWebViewController.h
 //  PostesMarked
 //
 //  Created by Konstantin Kolontay on 9/28/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ILTLoginViewController : UIViewController
+@interface ILTLoginWebViewController : UIViewController <UIWebViewDelegate>
 
 @end
