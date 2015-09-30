@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE2918811BB7239A0082E98D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EE2918801BB7239A0082E98D /* .gitignore */; settings = {ASSET_TAGS = (); }; };
 		EE50BB961BB71F1C00F4440E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB951BB71F1C00F4440E /* main.m */; };
 		EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB981BB71F1C00F4440E /* AppDelegate.m */; };
 		EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB9B1BB71F1C00F4440E /* ILTMainViewController.m */; };
@@ -19,7 +18,6 @@
 		EE50BBBD1BB71F1C00F4440E /* PostesMarkedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BBBC1BB71F1C00F4440E /* PostesMarkedUITests.m */; };
 		EE50BBCB1BB71F5500F4440E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EE50BBCA1BB71F5500F4440E /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */; settings = {ASSET_TAGS = (); }; };
-		EEF7FC631BBA786A008E3B52 /* UrlEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FC621BBA786A008E3B52 /* UrlEncoding.m */; settings = {ASSET_TAGS = (); }; };
 		F27151A5189C2622A3C4F950 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94340FC0130589E010EE0CF8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +42,6 @@
 		3CCF3C140EB20FC5A6D6F486 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94340FC0130589E010EE0CF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE05E38B83FE7163292E3951 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		EE2918801BB7239A0082E98D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EE50BB911BB71F1B00F4440E /* PostesMarked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostesMarked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE50BB951BB71F1C00F4440E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE50BB971BB71F1C00F4440E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,12 +59,10 @@
 		EE50BBB81BB71F1C00F4440E /* PostesMarkedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostesMarkedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE50BBBC1BB71F1C00F4440E /* PostesMarkedUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostesMarkedUITests.m; sourceTree = "<group>"; };
 		EE50BBBE1BB71F1C00F4440E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE50BBCA1BB71F5500F4440E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		EE50BBCA1BB71F5500F4440E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EE93B92E1BB980DF008FFEFD /* ILTLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTLoginWebViewController.h; sourceTree = "<group>"; };
 		EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTLoginWebViewController.m; sourceTree = "<group>"; };
 		EE99F9821BB7258600207607 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
-		EEF7FC611BBA786A008E3B52 /* UrlEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlEncoding.h; sourceTree = "<group>"; };
-		EEF7FC621BBA786A008E3B52 /* UrlEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlEncoding.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +111,7 @@
 		EE50BB881BB71F1B00F4440E = {
 			isa = PBXGroup;
 			children = (
-				EEF7FC611BBA786A008E3B52 /* UrlEncoding.h */,
-				EEF7FC621BBA786A008E3B52 /* UrlEncoding.m */,
 				EE50BBCA1BB71F5500F4440E /* Podfile */,
-				EE2918801BB7239A0082E98D /* .gitignore */,
 				EE50BB931BB71F1B00F4440E /* PostesMarked */,
 				EE50BBB01BB71F1C00F4440E /* PostesMarkedTests */,
 				EE50BBBB1BB71F1C00F4440E /* PostesMarkedUITests */,
@@ -301,7 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE2918811BB7239A0082E98D /* .gitignore in Resources */,
 				EE50BBA71BB71F1C00F4440E /* LaunchScreen.storyboard in Resources */,
 				EE50BBA41BB71F1C00F4440E /* Assets.xcassets in Resources */,
 				EE50BBCB1BB71F5500F4440E /* Podfile in Resources */,
@@ -365,7 +356,6 @@
 			files = (
 				EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */,
 				EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */,
-				EEF7FC631BBA786A008E3B52 /* UrlEncoding.m in Sources */,
 				EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */,
 				EE50BB961BB71F1C00F4440E /* main.m in Sources */,
 				EE50BBA21BB71F1C00F4440E /* PostesMarked.xcdatamodeld in Sources */,

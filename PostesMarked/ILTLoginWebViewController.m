@@ -8,7 +8,6 @@
 
 #import "ILTLoginWebViewController.h"
 #import "Defines.h"
-#import "UrlEncoding.h"
 
 
 @interface ILTLoginWebViewController () 
@@ -23,107 +22,77 @@
 
 #pragma mark - setup my id 
 
--(void) dealloc
-{
-    [_tokenRequestConnection cancel];
-    self.webView.delegate = nil;
-}
 
 -(void)viewDidLoad {
     self.webView.delegate = self;
-    //See http://instagram.com/developer/authentication/ for more details.
     
-    NSString *scopeStr = @"scope=basic+likes+comments";
+    NSString *scopeStr = @"scope=likes+comments";
     
     NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, scopeStr];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    [self.webView stopLoading];
-    
-    if([error code] == -1009)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot open the page because it is not connected to the Internet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-}
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSString *responseURL = [request.URL absoluteString];
-    
-    NSString *urlCallbackPrefix = [NSString stringWithFormat:@"%@/?code=", kRedirectURI];
-    
-    //We received the code, now request the auth token from Instagram.
-    if([responseURL hasPrefix:urlCallbackPrefix])
-    {
-        NSString *authToken = [responseURL substringFromIndex:[urlCallbackPrefix length]];
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([[[request URL]host] isEqualToString:@"localhost"]) {
+        NSString *verifier = nil;
+        NSArray *urlParams = [[[request URL]query] componentsSeparatedByString:@"&"];
+        for (NSString* param in urlParams) {
+            NSArray* keyValue = [param componentsSeparatedByString:@"="];
+            NSString* key = [keyValue objectAtIndex:0];
+            if ([key isEqualToString:@"code"]) {
+                verifier = [keyValue objectAtIndex:1];
+                break;
+            }
+        }
         
-        NSURL *url = [NSURL URLWithString:@"https://api.instagram.com/oauth/access_token"];
-        
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-        
-        NSDictionary *paramDict = [NSDictionary dictionaryWithObjectsAndKeys:authToken, @"code", kRedirectURI, @"redirect_uri", @"authorization_code", @"grant_type",  kClientID, @"client_id",  kClientSecret, @"client_secret", nil];
-        
-        NSString *paramString = [paramDict urlEncodedString];
-        
-        NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-        
-        [request setHTTPMethod:@"POST"];
-        [request addValue:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@",charset] forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:[paramString dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        self.tokenRequestConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        
-        [self.tokenRequestConnection start];
-        
+        if (verifier) {
+            
+            NSString *data = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",kClientID,kClientSecret,kRedirectURI,verifier];
+            
+            NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+            [request setHTTPMethod:@"POST"];
+            [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+            _tokenRequestConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+            _data = [[NSMutableData alloc] init];
+        }
+        [webView removeFromSuperview];
         return NO;
     }
-    
     return YES;
 }
 
-#pragma Mark NSURLConnection delegates
-
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
-{
-    return cachedResponse;
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [_data appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [self.data appendData:data];
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:[NSString stringWithFormat:@"%@", error]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [self.data setLength:0];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSError *jsonError = nil;
     id jsonData = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:&jsonError];
     if(jsonData && [NSJSONSerialization isValidJSONObject:jsonData])
     {
         NSString *accesstoken = [jsonData objectForKey:@"access_token"];
-        if(accesstoken)
-        {
-            //[self.authDelegate didAuthWithToken:accesstoken];
-            return;
-        }
+        NSString *pdata = [NSString stringWithFormat:@"type=3&token=%@&secret=123&login=%@", accesstoken , @"xxxx"];
+        UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"Instagram Access TOken"
+                              message:pdata
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alertView show];
     }
-    
-   // [self.authDelegate didAuthWithToken:nil];
-}
-
-- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse
-{
-    return request;
 }
 
 @end
