@@ -18,6 +18,9 @@
 		EE50BBBD1BB71F1C00F4440E /* PostesMarkedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BBBC1BB71F1C00F4440E /* PostesMarkedUITests.m */; };
 		EE50BBCB1BB71F5500F4440E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EE50BBCA1BB71F5500F4440E /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */; settings = {ASSET_TAGS = (); }; };
+		EEDE3ABA1BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AB71BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		EEDE3ABB1BBF0B8000ADB02B /* ILTInstagramsPostes.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AB91BBF0B8000ADB02B /* ILTInstagramsPostes.m */; settings = {ASSET_TAGS = (); }; };
 		F27151A5189C2622A3C4F950 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94340FC0130589E010EE0CF8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,12 @@
 		EE93B92E1BB980DF008FFEFD /* ILTLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTLoginWebViewController.h; sourceTree = "<group>"; };
 		EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTLoginWebViewController.m; sourceTree = "<group>"; };
 		EE99F9821BB7258600207607 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		EEDE3AAD1BBF043200ADB02B /* ILTNetworkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTNetworkConnection.h; sourceTree = "<group>"; };
+		EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTNetworkConnection.m; sourceTree = "<group>"; };
+		EEDE3AB61BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ILTInstagramsPostes+CoreDataProperties.h"; path = "../ILTInstagramsPostes+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EEDE3AB71BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ILTInstagramsPostes+CoreDataProperties.m"; path = "../ILTInstagramsPostes+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EEDE3AB81BBF0B8000ADB02B /* ILTInstagramsPostes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ILTInstagramsPostes.h; path = ../ILTInstagramsPostes.h; sourceTree = "<group>"; };
+		EEDE3AB91BBF0B8000ADB02B /* ILTInstagramsPostes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ILTInstagramsPostes.m; path = ../ILTInstagramsPostes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +143,12 @@
 		EE50BB931BB71F1B00F4440E /* PostesMarked */ = {
 			isa = PBXGroup;
 			children = (
+				EEDE3ABC1BBF0BFD00ADB02B /* Data */,
 				EE99F9831BB90A9500207607 /* Controllers */,
 				EE50BB971BB71F1C00F4440E /* AppDelegate.h */,
 				EE50BB981BB71F1C00F4440E /* AppDelegate.m */,
+				EEDE3AAD1BBF043200ADB02B /* ILTNetworkConnection.h */,
+				EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */,
 				EE50BB9D1BB71F1C00F4440E /* Main.storyboard */,
 				EE99F9821BB7258600207607 /* Defines.h */,
 				EE50BBA31BB71F1C00F4440E /* Assets.xcassets */,
@@ -183,6 +195,17 @@
 				EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		EEDE3ABC1BBF0BFD00ADB02B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EEDE3AB61BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.h */,
+				EEDE3AB71BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m */,
+				EEDE3AB81BBF0B8000ADB02B /* ILTInstagramsPostes.h */,
+				EEDE3AB91BBF0B8000ADB02B /* ILTInstagramsPostes.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,10 +377,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEDE3ABB1BBF0B8000ADB02B /* ILTInstagramsPostes.m in Sources */,
 				EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */,
 				EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */,
 				EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */,
 				EE50BB961BB71F1C00F4440E /* main.m in Sources */,
+				EEDE3ABA1BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m in Sources */,
+				EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */,
 				EE50BBA21BB71F1C00F4440E /* PostesMarked.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,14 +7,13 @@
 //
 
 #import "ILTLoginWebViewController.h"
-#import "Defines.h"
+#import "ILTNetworkConnection.h"
 
 
 @interface ILTLoginWebViewController () 
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (nonatomic, strong) NSMutableData *data;
-@property(nonatomic, strong) NSURLConnection *tokenRequestConnection;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
 
 @end
 
@@ -22,15 +21,14 @@
 
 #pragma mark - setup my id 
 
-
 -(void)viewDidLoad {
     self.webView.delegate = self;
+    _networkConnection = [[ILTNetworkConnection alloc]init];
+   // NSString *scopeStr = @"scope=likes+comments";
     
-    NSString *scopeStr = @"scope=likes+comments";
+   // NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, scopeStr];
     
-    NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, scopeStr];
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [self.webView loadRequest:[_networkConnection representRequest:[_networkConnection getURlForAuthintification]]];
 }
 
 
@@ -84,14 +82,14 @@
     if(jsonData && [NSJSONSerialization isValidJSONObject:jsonData])
     {
         NSString *accesstoken = [jsonData objectForKey:@"access_token"];
-        NSString *pdata = [NSString stringWithFormat:@"type=3&token=%@&secret=123&login=%@", accesstoken , @"xxxx"];
+       /* NSString *pdata = [NSString stringWithFormat:@"type=3&token=%@&secret=123&login=%@", accesstoken , @"xxxx"];
         UIAlertView *alertView = [[UIAlertView alloc]
                               initWithTitle:@"Instagram Access TOken"
                               message:pdata
                               delegate:nil
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
-        [alertView show];
+        [alertView show];*/
     }
 }
 
