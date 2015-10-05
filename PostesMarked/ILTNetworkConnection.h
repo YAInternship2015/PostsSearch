@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 
 @interface ILTNetworkConnection : NSObject
-
+@property (nonatomic, strong) NSURLConnection *tokenRequestConnection;
 - (NSString *) getURlForAuthintification;
+@property (nonatomic, strong) NSMutableData *data;
 - (NSURLRequest *) representRequest:(NSString *)url;
+//- (BOOL)startLoad:(NSURLRequest *)request viewController:(UIViewController *)controller;
+- (void)addDataFromNetwork:(NSData *)data;
+- (void)setToken;
 
 @end

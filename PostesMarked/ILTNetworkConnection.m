@@ -8,23 +8,37 @@
 
 #import "ILTNetworkConnection.h"
 #import "Defines.h"
+#import "ILTLoginWebViewController.h"
 
 @interface ILTNetworkConnection ()
 
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *nextPage;
-@property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, strong) NSURLConnection *tokenRequestConnection;
-//@property (nonatomic, retain) NSString *getURlForAuthintification;
+@property (nonatomic, retain) NSString *getURlForAuthintification;
 
 @end
 
 @implementation ILTNetworkConnection
 
-- (NSString *) getURlForAuthintification {
-    return [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, @"scope=basic"];
+- (NSString *)getURlForAuthintification {
+    return [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, @"scope=likes+comments"];
 }
-- (NSURLRequest *) representRequest:(NSString *)url {
+
+- (NSURLRequest *)representRequest:(NSString *)url {
     return [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+}
+
+
+- (void)addDataFromNetwork:(NSData *)addData {
+    [_data appendData:addData];
+}
+
+- (void)setToken {
+    NSError *jsonError = nil;
+    id jsonData = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:&jsonError];
+    if(jsonData && [NSJSONSerialization isValidJSONObject:jsonData])
+    {
+        _accessToken = [jsonData objectForKey:@"access_token"];
+    }
 }
 @end

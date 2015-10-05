@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ILTNetworkConnection.h"
 
 @interface ILTLoginWebViewController : UIViewController <UIWebViewDelegate>
-
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
 @end
