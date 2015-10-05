@@ -12,7 +12,7 @@
 
 @interface ILTNetworkConnection ()
 
-@property (nonatomic, strong) NSString *accessToken;
+
 @property (nonatomic, strong) NSString *nextPage;
 @property (nonatomic, retain) NSString *getURlForAuthintification;
 
@@ -39,6 +39,12 @@
     if(jsonData && [NSJSONSerialization isValidJSONObject:jsonData])
     {
         _accessToken = [jsonData objectForKey:@"access_token"];
+    }
+}
+
+- (void)requestTags:(NSString *)url tagForSearch:(NSString *) tag {
+    if (url == nil) {
+        url = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?access_token=%@",tag,_accessToken];
     }
 }
 @end

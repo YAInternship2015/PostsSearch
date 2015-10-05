@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MRd-3Q-SUX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MRd-3Q-SUX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -16,15 +16,63 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nsq-b6-bEa">
+                                <rect key="frame" x="159" y="194" width="283" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="283" id="v46-AW-Ant"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKc-j5-Fl5">
+                                <rect key="frame" x="396" y="194" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="GSG-jw-6gV"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startSearchTags:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IsE-qU-HI6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter #tag for search in Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAp-eQ-aAp">
+                                <rect key="frame" x="166" y="165" width="268" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="1Zs-Je-nAY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nsq-b6-bEa" firstAttribute="top" secondItem="NKc-j5-Fl5" secondAttribute="top" id="MMx-Sk-BW7"/>
+                            <constraint firstItem="XAp-eQ-aAp" firstAttribute="centerX" secondItem="Nsq-b6-bEa" secondAttribute="centerX" id="PXf-p9-CAz"/>
+                            <constraint firstItem="XAp-eQ-aAp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="101" id="Zlx-E5-WDJ"/>
+                            <constraint firstItem="NKc-j5-Fl5" firstAttribute="trailing" secondItem="Nsq-b6-bEa" secondAttribute="trailing" id="bID-qj-bte"/>
+                            <constraint firstItem="Nsq-b6-bEa" firstAttribute="bottom" secondItem="NKc-j5-Fl5" secondAttribute="bottom" id="bVG-OY-S7C"/>
+                            <constraint firstItem="Nsq-b6-bEa" firstAttribute="top" secondItem="XAp-eQ-aAp" secondAttribute="bottom" constant="8" symbolic="YES" id="gda-nw-NpJ"/>
+                            <constraint firstItem="XAp-eQ-aAp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sdL-o8-j1d"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="84B-Tr-Gix">
                         <barButtonItem key="rightBarButtonItem" title="LogIn" id="pL3-LX-cmc">
                             <connections>
-                                <segue destination="JcV-At-cDr" kind="presentation" id="iOp-af-XU2"/>
+                                <segue destination="JcV-At-cDr" kind="presentation" identifier="login" id="iOp-af-XU2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="Nsq-b6-bEa" id="Cuv-aW-IZL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,9 +92,11 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8g-BY-efi">
                                 <rect key="frame" x="0.0" y="68" width="600" height="532"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="H8g-BY-efi" firstAttribute="leading" secondItem="gHD-nB-XMD" secondAttribute="leading" id="2sy-Be-i9B"/>
@@ -71,6 +121,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5v9-cd-NAR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

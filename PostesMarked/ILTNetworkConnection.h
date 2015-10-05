@@ -12,6 +12,7 @@
 
 @interface ILTNetworkConnection : NSObject
 @property (nonatomic, strong) NSURLConnection *tokenRequestConnection;
+@property (nonatomic, strong) NSString *accessToken;
 - (NSString *) getURlForAuthintification;
 @property (nonatomic, strong) NSMutableData *data;
 - (NSURLRequest *) representRequest:(NSString *)url;

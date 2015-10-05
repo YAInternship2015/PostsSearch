@@ -7,8 +7,13 @@
 //
 
 #import "ILTMainViewController.h"
+#import "ILTNetworkConnection.h"
+#import "ILTLoginWebViewController.h"
 
 @interface ILTMainViewController ()
+
+@property ( nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
 
 @end
 
@@ -16,12 +21,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    _networkConnection = [[ILTNetworkConnection alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+- (IBAction)startSearchTags:(UIButton *)sender {
+    if (_networkConnection.accessToken  == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please, login to Instagram"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+-(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"login"]) {
+        ILTLoginWebViewController * login =(ILTLoginWebViewController *) [segue destinationViewController];
+        login.networkConnection = _networkConnection;
+    }
+    else {
+        NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent",_textField.text];
+    }
 }
 
 @end

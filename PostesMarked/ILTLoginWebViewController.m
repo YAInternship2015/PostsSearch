@@ -13,8 +13,8 @@
 
 @interface ILTLoginWebViewController () 
 
-//@property (nonatomic, weak) IBOutlet UIWebView *webView;
-@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+
 
 @end
 
@@ -24,7 +24,7 @@
 
 -(void)viewDidLoad {
     self.webView.delegate = self;
-    _networkConnection = [[ILTNetworkConnection alloc]init];
+   // _networkConnection = [[ILTNetworkConnection alloc]init];
    // NSString *scopeStr = @"scope=likes+comments";
     
    // NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, scopeStr];
@@ -49,26 +49,18 @@
         }
         
         if (verifier) {
-            
             NSString *dataString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",kClientID,kClientSecret,kRedirectURI,verifier];
-            
             NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
-            
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
             [request setHTTPMethod:@"POST"];
             [request setHTTPBody:[dataString dataUsingEncoding:NSUTF8StringEncoding]];
             _networkConnection.tokenRequestConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
             _networkConnection.data = [[NSMutableData alloc] init];
-        } else {
-            // ERROR!
         }
-        
-        [self.webView removeFromSuperview];
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
         return NO;
     }
     return YES;
-    
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

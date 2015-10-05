@@ -10,5 +10,6 @@
 #import "ILTNetworkConnection.h"
 
 @interface ILTLoginWebViewController : UIViewController <UIWebViewDelegate>
-@property (nonatomic, weak) IBOutlet UIWebView *webView;
+//@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
 @end
