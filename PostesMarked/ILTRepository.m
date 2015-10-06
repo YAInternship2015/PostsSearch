@@ -12,8 +12,8 @@
 
 # pragma mark - save data from network 20 members
 
-- (void)saveDataFromNetwork:(NSArray *)array {
-    NSArray *dataTags = [[NSArray alloc]initWithArray:array];
+- (void)saveDataFromNetwork:(NSArray *)dictionary {
+    NSArray *dataTags = [[NSArray alloc]initWithArray:dictionary];
     for (int i = 0; i <dataTags.count; i++) {
         NSDictionary *tag = [dataTags objectAtIndex:i];
     }

@@ -73,8 +73,8 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
    [manager setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
         _recivedData = (NSDictionary *)responseObject;
-       NSNumber *code = [[_recivedData objectForKey:@"meta"] objectForKey:@"code"];
-        if (code == [NSNumber numberWithInt:200]) {
+       int code =[[[_recivedData objectForKey:@"meta"] objectForKey:@"code"]intValue];
+        if (code == 200) {
         _nextPage = [NSString stringWithFormat:@"%@",[[_recivedData objectForKey:@"pagination"] objectForKey:@"next_url"]];
             NSArray *data = [_recivedData objectForKey:@"data"];
             [_repository saveDataFromNetwork:data];
