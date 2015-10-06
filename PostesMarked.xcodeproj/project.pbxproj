@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE12D5A11BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EE12D59E1BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		EE12D5A21BC3B216000DDE2A /* ILTInstagramsPostes.m in Sources */ = {isa = PBXBuildFile; fileRef = EE12D5A01BC3B216000DDE2A /* ILTInstagramsPostes.m */; settings = {ASSET_TAGS = (); }; };
 		EE50BB961BB71F1C00F4440E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB951BB71F1C00F4440E /* main.m */; };
 		EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB981BB71F1C00F4440E /* AppDelegate.m */; };
 		EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB9B1BB71F1C00F4440E /* ILTMainViewController.m */; };
@@ -44,6 +46,10 @@
 		3CCF3C140EB20FC5A6D6F486 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94340FC0130589E010EE0CF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE05E38B83FE7163292E3951 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EE12D59D1BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ILTInstagramsPostes+CoreDataProperties.h"; sourceTree = "<group>"; };
+		EE12D59E1BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ILTInstagramsPostes+CoreDataProperties.m"; sourceTree = "<group>"; };
+		EE12D59F1BC3B216000DDE2A /* ILTInstagramsPostes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTInstagramsPostes.h; sourceTree = "<group>"; };
+		EE12D5A01BC3B216000DDE2A /* ILTInstagramsPostes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTInstagramsPostes.m; sourceTree = "<group>"; };
 		EE50BB911BB71F1B00F4440E /* PostesMarked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostesMarked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE50BB951BB71F1C00F4440E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE50BB971BB71F1C00F4440E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,6 +203,10 @@
 		EEDE3ABC1BBF0BFD00ADB02B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EE12D59D1BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.h */,
+				EE12D59E1BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.m */,
+				EE12D59F1BC3B216000DDE2A /* ILTInstagramsPostes.h */,
+				EE12D5A01BC3B216000DDE2A /* ILTInstagramsPostes.m */,
 				EEA78B5B1BC39D8800DFCA85 /* ILTRepository.h */,
 				EEA78B5C1BC39D8900DFCA85 /* ILTRepository.m */,
 			);
@@ -374,10 +384,12 @@
 			files = (
 				EEA78B5D1BC39D8900DFCA85 /* ILTRepository.m in Sources */,
 				EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */,
+				EE12D5A21BC3B216000DDE2A /* ILTInstagramsPostes.m in Sources */,
 				EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */,
 				EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */,
 				EE50BB961BB71F1C00F4440E /* main.m in Sources */,
 				EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */,
+				EE12D5A11BC3B216000DDE2A /* ILTInstagramsPostes+CoreDataProperties.m in Sources */,
 				EE50BBA21BB71F1C00F4440E /* PostesMarked.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

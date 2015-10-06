@@ -14,5 +14,8 @@
 
 - (void)saveDataFromNetwork:(NSArray *)array {
     NSArray *dataTags = [[NSArray alloc]initWithArray:array];
+    for (int i = 0; i <dataTags.count; i++) {
+        NSDictionary *tag = [dataTags objectAtIndex:i];
+    }
 }
 @end
