@@ -19,5 +19,6 @@
 //- (BOOL)startLoad:(NSURLRequest *)request viewController:(UIViewController *)controller;
 - (void)addDataFromNetwork:(NSData *)data;
 - (void)setToken;
+- (void)requestTags:(NSString *)url tagForSearch:(NSString *) tag;
 
 @end

@@ -18,9 +18,8 @@
 		EE50BBBD1BB71F1C00F4440E /* PostesMarkedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BBBC1BB71F1C00F4440E /* PostesMarkedUITests.m */; };
 		EE50BBCB1BB71F5500F4440E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EE50BBCA1BB71F5500F4440E /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EEA78B5D1BC39D8900DFCA85 /* ILTRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA78B5C1BC39D8900DFCA85 /* ILTRepository.m */; settings = {ASSET_TAGS = (); }; };
 		EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */; settings = {ASSET_TAGS = (); }; };
-		EEDE3ABA1BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AB71BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		EEDE3ABB1BBF0B8000ADB02B /* ILTInstagramsPostes.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AB91BBF0B8000ADB02B /* ILTInstagramsPostes.m */; settings = {ASSET_TAGS = (); }; };
 		F27151A5189C2622A3C4F950 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94340FC0130589E010EE0CF8 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -66,12 +65,10 @@
 		EE93B92E1BB980DF008FFEFD /* ILTLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTLoginWebViewController.h; sourceTree = "<group>"; };
 		EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTLoginWebViewController.m; sourceTree = "<group>"; };
 		EE99F9821BB7258600207607 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		EEA78B5B1BC39D8800DFCA85 /* ILTRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTRepository.h; sourceTree = "<group>"; };
+		EEA78B5C1BC39D8900DFCA85 /* ILTRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTRepository.m; sourceTree = "<group>"; };
 		EEDE3AAD1BBF043200ADB02B /* ILTNetworkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTNetworkConnection.h; sourceTree = "<group>"; };
 		EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTNetworkConnection.m; sourceTree = "<group>"; };
-		EEDE3AB61BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ILTInstagramsPostes+CoreDataProperties.h"; path = "../ILTInstagramsPostes+CoreDataProperties.h"; sourceTree = "<group>"; };
-		EEDE3AB71BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ILTInstagramsPostes+CoreDataProperties.m"; path = "../ILTInstagramsPostes+CoreDataProperties.m"; sourceTree = "<group>"; };
-		EEDE3AB81BBF0B8000ADB02B /* ILTInstagramsPostes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ILTInstagramsPostes.h; path = ../ILTInstagramsPostes.h; sourceTree = "<group>"; };
-		EEDE3AB91BBF0B8000ADB02B /* ILTInstagramsPostes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ILTInstagramsPostes.m; path = ../ILTInstagramsPostes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,10 +197,8 @@
 		EEDE3ABC1BBF0BFD00ADB02B /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				EEDE3AB61BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.h */,
-				EEDE3AB71BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m */,
-				EEDE3AB81BBF0B8000ADB02B /* ILTInstagramsPostes.h */,
-				EEDE3AB91BBF0B8000ADB02B /* ILTInstagramsPostes.m */,
+				EEA78B5B1BC39D8800DFCA85 /* ILTRepository.h */,
+				EEA78B5C1BC39D8900DFCA85 /* ILTRepository.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -377,12 +372,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEDE3ABB1BBF0B8000ADB02B /* ILTInstagramsPostes.m in Sources */,
+				EEA78B5D1BC39D8900DFCA85 /* ILTRepository.m in Sources */,
 				EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */,
 				EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */,
 				EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */,
 				EE50BB961BB71F1C00F4440E /* main.m in Sources */,
-				EEDE3ABA1BBF0B8000ADB02B /* ILTInstagramsPostes+CoreDataProperties.m in Sources */,
 				EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */,
 				EE50BBA21BB71F1C00F4440E /* PostesMarked.xcdatamodeld in Sources */,
 			);

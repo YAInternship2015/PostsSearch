@@ -36,15 +36,15 @@
                                               otherButtonTitles:nil];
         [alert show];
     }
+    else {
+        [ _networkConnection requestTags:nil tagForSearch:_textField.text];
+    }
 }
 -(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"login"]) {
         ILTLoginWebViewController * login =(ILTLoginWebViewController *) [segue destinationViewController];
         login.networkConnection = _networkConnection;
-    }
-    else {
-        NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent",_textField.text];
     }
 }
 
