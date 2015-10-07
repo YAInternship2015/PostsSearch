@@ -47,7 +47,7 @@
         ILTLoginWebViewController * login = (ILTLoginWebViewController *) [segue destinationViewController];
         login.networkConnection = _networkConnection;
     }
-    if ([[segue identifier] isEqualToString:@"myCell"]) {
+    if ([[segue identifier] isEqualToString:@"showTags"]) {
         ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *) [segue destinationViewController];
         tagsShow.repository = _networkConnection.repository;
     }
