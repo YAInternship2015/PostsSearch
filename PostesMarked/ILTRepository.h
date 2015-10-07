@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ILTInstagramsPostes.h"
 
 @interface ILTRepository : NSObject
-- (void)saveDataFromNetwork:(NSArray *)array;
+- (void)saveDataFromNetwork: (NSArray *)array;
+- (NSArray *)getCoreDataItems;
+- (void)deleteItem: (ILTInstagramsPostes *)item;
+- (void)addItem: (ILTInstagramsPostes *) item;
+- (BOOL)searchItem: (ILTInstagramsPostes *)item;
+- (ILTInstagramsPostes *)getItem: (int)index;
 @end

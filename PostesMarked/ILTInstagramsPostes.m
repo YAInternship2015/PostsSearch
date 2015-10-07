@@ -2,7 +2,7 @@
 //  ILTInstagramsPostes.m
 //  PostesMarked
 //
-//  Created by Konstantin Kolontay on 10/6/15.
+//  Created by Konstantin Kolontay on 10/7/15.
 //  Copyright © 2015 Konstantin Kolontay. All rights reserved.
 //
 
