@@ -9,6 +9,7 @@
 #import "ILTMainViewController.h"
 #import "ILTNetworkConnection.h"
 #import "ILTLoginWebViewController.h"
+#import "ILTTagsShowTableViewController.h"
 
 @interface ILTMainViewController ()
 
@@ -43,8 +44,12 @@
 -(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"login"]) {
-        ILTLoginWebViewController * login =(ILTLoginWebViewController *) [segue destinationViewController];
+        ILTLoginWebViewController * login = (ILTLoginWebViewController *) [segue destinationViewController];
         login.networkConnection = _networkConnection;
+    }
+    if ([[segue identifier] isEqualToString:@"myCell"]) {
+        ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *) [segue destinationViewController];
+        tagsShow.repository = _networkConnection.repository;
     }
 }
 

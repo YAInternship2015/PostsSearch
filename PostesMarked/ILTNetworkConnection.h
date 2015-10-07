@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ILTSendedDataDelegate.h"
+#import "ILTRepository.h"
 
+@interface ILTNetworkConnection : NSObject <ILTSendedDataDelegate>
 
-@interface ILTNetworkConnection : NSObject
+@property (nonatomic, strong) NSString *nextPage;
+@property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, strong) NSURLConnection *tokenRequestConnection;
 @property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) ILTRepository *repository;
 - (NSString *) getURlForAuthintification;
-@property (nonatomic, strong) NSMutableData *data;
 - (NSURLRequest *) representRequest:(NSString *)url;
-//- (BOOL)startLoad:(NSURLRequest *)request viewController:(UIViewController *)controller;
 - (void)addDataFromNetwork:(NSData *)data;
 - (void)setToken;
-- (void)requestTags:(NSString *)url tagForSearch:(NSString *) tag;
+- (void)requestTags:(NSString *)url tagForSearch:(NSString *)tag;
 
 @end

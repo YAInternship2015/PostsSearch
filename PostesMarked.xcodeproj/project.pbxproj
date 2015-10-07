@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE1941461BC59ED400F435CE /* ILTTagsShowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1941451BC59ED400F435CE /* ILTTagsShowTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		EE1941491BC5A1F800F435CE /* ILTCustomerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1941481BC5A1F800F435CE /* ILTCustomerTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		EE50BB961BB71F1C00F4440E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB951BB71F1C00F4440E /* main.m */; };
 		EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB981BB71F1C00F4440E /* AppDelegate.m */; };
 		EE50BB9C1BB71F1C00F4440E /* ILTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB9B1BB71F1C00F4440E /* ILTMainViewController.m */; };
@@ -46,6 +48,11 @@
 		3CCF3C140EB20FC5A6D6F486 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94340FC0130589E010EE0CF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE05E38B83FE7163292E3951 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EE1941431BC5924A00F435CE /* ILTSendedDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTSendedDataDelegate.h; sourceTree = "<group>"; };
+		EE1941441BC59ED400F435CE /* ILTTagsShowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTTagsShowTableViewController.h; sourceTree = "<group>"; };
+		EE1941451BC59ED400F435CE /* ILTTagsShowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTTagsShowTableViewController.m; sourceTree = "<group>"; };
+		EE1941471BC5A1F800F435CE /* ILTCustomerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTCustomerTableViewCell.h; sourceTree = "<group>"; };
+		EE1941481BC5A1F800F435CE /* ILTCustomerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTCustomerTableViewCell.m; sourceTree = "<group>"; };
 		EE50BB911BB71F1B00F4440E /* PostesMarked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostesMarked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE50BB951BB71F1C00F4440E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EE50BB971BB71F1C00F4440E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 				EE50BB981BB71F1C00F4440E /* AppDelegate.m */,
 				EEDE3AAD1BBF043200ADB02B /* ILTNetworkConnection.h */,
 				EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */,
+				EE1941431BC5924A00F435CE /* ILTSendedDataDelegate.h */,
 				EE50BB9D1BB71F1C00F4440E /* Main.storyboard */,
 				EE99F9821BB7258600207607 /* Defines.h */,
 				EE50BBA31BB71F1C00F4440E /* Assets.xcassets */,
@@ -196,6 +204,10 @@
 				EE50BB9B1BB71F1C00F4440E /* ILTMainViewController.m */,
 				EE93B92E1BB980DF008FFEFD /* ILTLoginWebViewController.h */,
 				EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */,
+				EE1941441BC59ED400F435CE /* ILTTagsShowTableViewController.h */,
+				EE1941451BC59ED400F435CE /* ILTTagsShowTableViewController.m */,
+				EE1941471BC5A1F800F435CE /* ILTCustomerTableViewCell.h */,
+				EE1941481BC5A1F800F435CE /* ILTCustomerTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -388,7 +400,9 @@
 				EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */,
 				EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */,
 				EE50BB961BB71F1C00F4440E /* main.m in Sources */,
+				EE1941461BC59ED400F435CE /* ILTTagsShowTableViewController.m in Sources */,
 				EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */,
+				EE1941491BC5A1F800F435CE /* ILTCustomerTableViewCell.m in Sources */,
 				EE52D2531BC545FB007D91EF /* ILTInstagramsPostes+CoreDataProperties.m in Sources */,
 				EE50BBA21BB71F1C00F4440E /* PostesMarked.xcdatamodeld in Sources */,
 			);

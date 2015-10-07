@@ -10,6 +10,8 @@
 
 @implementation ILTInstagramsPostes
 
-// Insert code here to add functionality to your managed object subclass
+- (UIImage *)getImage {
+    return  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.pathPicture]]];
+}
 
 @end

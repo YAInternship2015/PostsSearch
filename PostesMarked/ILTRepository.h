@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ILTInstagramsPostes.h"
+#import "ILTSendedDataDelegate.h"
 
-@interface ILTRepository : NSObject
+@interface ILTRepository : NSObject <NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, weak) id <ILTSendedDataDelegate> delegate;
+@property (nonatomic,strong) NSFetchedResultsController *fetchedResultsController;
 - (void)saveDataFromNetwork: (NSArray *)array;
 - (NSArray *)getCoreDataItems;
-- (void)deleteItem: (ILTInstagramsPostes *)item;
-- (void)addItem: (ILTInstagramsPostes *) item;
-- (BOOL)searchItem: (ILTInstagramsPostes *)item;
-- (ILTInstagramsPostes *)getItem: (int)index;
+- (void)deleteItem:(NSIndexPath *)index;
+- (NSFetchedResultsController *)getFetchedResultsController;
+
 @end

@@ -23,6 +23,7 @@
     self = [super init];
     if (self) {
         _context = [NSManagedObjectContext MR_context];
+        _fetchedResultsController = [ILTInstagramsPostes MR_fetchAllSortedBy:@"id" ascending:YES withPredicate:nil groupBy:nil delegate:self];
     }
     return self;
 }
@@ -35,34 +36,43 @@
         ILTInstagramsPostes *itemExist = nil;
         NSDictionary *tag = [dataTags objectAtIndex:i];
         itemExist = [ILTInstagramsPostes MR_findFirstByAttribute:@"id" withValue:[tag objectForKey:@"id"]];
+        ILTInstagramsPostes *item = nil;
         if (itemExist == nil) {
-            ILTInstagramsPostes *item = [ILTInstagramsPostes MR_createEntityInContext:_context];
-            item.id = [tag objectForKey:@"id"];
-            NSDictionary *captionText = [tag objectForKey:@"caption"];
-            item.comentText = [captionText objectForKey:@"text"];
-            NSDictionary *images = [tag objectForKey:@"images"];
-            NSDictionary *image = [images objectForKey:@"low_resolution"];
-            item.pathPicture = [image objectForKey:@"url"];
-            item.sizeHeight = [image objectForKey:@"height"];
-            item.sizeWidtch = [image objectForKey:@"width"];
+            item = [ILTInstagramsPostes MR_createEntityInContext:_context];
         }
+        else {
+            item = itemExist;
+        }
+        item.id = [tag objectForKey:@"id"];
+        NSDictionary *captionText = [tag objectForKey:@"caption"];
+        item.comentText = [captionText objectForKey:@"text"];
+        NSDictionary *images = [tag objectForKey:@"images"];
+        NSDictionary *image = [images objectForKey:@"low_resolution"];
+        item.pathPicture = [image objectForKey:@"url"];
+        item.sizeHeight = [image objectForKey:@"height"];
+        item.sizeWidtch = [image objectForKey:@"width"];
+        [_context MR_saveToPersistentStoreAndWait];
     }
 }
 
 - (NSArray *)getCoreDataItems {
     return [ILTInstagramsPostes MR_findAll];
 }
-- (void)deleteItem: (ILTInstagramsPostes *)item {
-    
-}
-- (void)addItem: (ILTInstagramsPostes *) item {
-    
-}
-- (BOOL)searchItem: (ILTInstagramsPostes *)item {
-    return YES;
-    
-}
-/*- (ILTInstagramsPostes *)getItem: (int)index {
+#pragma mark - delete item from repository
 
-}*/
+- (void)deleteItem:(NSIndexPath *)index {
+    ILTInstagramsPostes *item = [_fetchedResultsController objectAtIndexPath:index];
+    [item MR_deleteEntity];
+    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+}
+
+
+- (void)nextLoading {
+    [self.delegate requestTags:[self.delegate nextPage] tagForSearch:nil];
+}
+
+- (NSFetchedResultsController *)getFetchedResultsController {
+    return _fetchedResultsController;
+}
+
 @end

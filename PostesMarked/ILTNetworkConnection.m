@@ -10,16 +10,16 @@
 #import "Defines.h"
 #import "ILTLoginWebViewController.h"
 #import "AFNetworking.h"
-#import "ILTRepository.h"
-
-@interface ILTNetworkConnection ()
 
 
-@property (nonatomic, strong) NSString *nextPage;
+
+@interface ILTNetworkConnection () 
+
+
 @property (nonatomic, retain) NSString *getURlForAuthintification;
 @property (nonatomic, strong) NSDictionary *recivedData;
-//@property (nonatomic, strong) NSNumber *code;
-@property (nonatomic, strong) ILTRepository *repository;
+@property (nonatomic, strong) NSString *nextMaxId;
+
 
 @end
 
@@ -29,6 +29,7 @@
     self = [super init];
     if (self) {
         _repository = [[ILTRepository alloc]init];
+        _repository.delegate = self;
     }
     return self;
 }
@@ -67,7 +68,6 @@
     else {
         urlRequest = [NSURL URLWithString:_nextPage];
     }
-    //NSNumber *code;
     NSURLRequest *request = [NSURLRequest requestWithURL:urlRequest];
     AFHTTPRequestOperation *manager = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -76,10 +76,14 @@
        int code =[[[_recivedData objectForKey:@"meta"] objectForKey:@"code"]intValue];
         if (code == 200) {
         _nextPage = [NSString stringWithFormat:@"%@",[[_recivedData objectForKey:@"pagination"] objectForKey:@"next_url"]];
-            NSArray *data = [_recivedData objectForKey:@"data"];
-            [_repository saveDataFromNetwork:data];
-       }
-        
+            NSString *newNextMaxId = [NSString stringWithFormat:@"%@",[[_recivedData objectForKey:@"pagination"] objectForKey:@"next_max_id"]];
+            if (![newNextMaxId isEqualToString:_nextMaxId]) {
+                NSArray *data = [_recivedData objectForKey:@"data"];
+                [_repository saveDataFromNetwork:data];
+                _nextMaxId = newNextMaxId;
+            }
+        }
+       
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
                                                             message:[error localizedDescription]
