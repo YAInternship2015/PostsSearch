@@ -13,11 +13,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#warning лучше ILTInstagramPost
 @interface ILTInstagramsPostes (CoreDataProperties)
 
+#warning commentText
 @property (nullable, nonatomic, retain) NSString *comentText;
+#warning имя переменной id конфликтует с типом данных id, лучше переименуйте свойсво на postID или что-то такое
 @property (nullable, nonatomic, retain) NSString *id;
+#warning лучше imageURLString
 @property (nullable, nonatomic, retain) NSString *pathPicture;
+#warning не нашел применения следующих двух свойств. Если они не нужны, то удалите их
 @property (nullable, nonatomic, retain) NSNumber *sizeHeight;
 @property (nullable, nonatomic, retain) NSNumber *sizeWidtch;
 

@@ -10,9 +10,9 @@
 #import <CoreData/CoreData.h>
 #import "ILTCustomerTableViewCell.h"
 
-
 @interface ILTTagsShowTableViewController () <NSFetchedResultsControllerDelegate>
 
+#warning зачем вью контроллеру хранить fetchedResultsController? Он же не обращается к нему напрямую за данными. А делегат fetchedResultsController'у можно прокинуть через какой-нибудь метод
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
@@ -69,6 +69,7 @@
 #pragma mark - fetch new data when all view 
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+#warning цифру 5 надо объявить константой с именем
     if (indexPath.row == ([[_repository getCoreDataItems] count] - 5)) {
         [_repository nextLoading];
     }

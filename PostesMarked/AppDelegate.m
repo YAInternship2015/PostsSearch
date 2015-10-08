@@ -13,6 +13,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#warning имя стора надо объявить константой
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"PostesMarked"];
     return YES;
 }

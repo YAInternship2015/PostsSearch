@@ -63,6 +63,7 @@
 #pragma mark - if error connection show message 
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+#warning текст нужно вынести в Localizable.strings
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:[NSString stringWithFormat:@"%@", error]
                                                    delegate:nil

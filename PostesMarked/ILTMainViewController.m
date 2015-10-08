@@ -29,6 +29,7 @@
 
 #pragma mark - warning about authentification 
 
+#warning этот метод не нужен
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -37,6 +38,7 @@
 
 - (IBAction)startSearchTags:(UIButton *)sender {
     if (_networkConnection.accessToken  == nil) {
+#warning тексты необходимо вынести в Localizable.strings
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"Please, login to Instagram"
                                                        delegate:nil

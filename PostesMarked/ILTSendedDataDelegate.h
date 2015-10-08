@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#warning плозое имя протокола, переименуйте его
 @protocol ILTSendedDataDelegate <NSObject>
 
 @property (nonatomic, strong) NSString *nextPage;
