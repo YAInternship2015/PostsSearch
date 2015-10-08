@@ -66,5 +66,10 @@
     }
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == ([[_repository getCoreDataItems]count]-5)) {
+        [_repository nextLoading];
+    }
+}
 @end
 

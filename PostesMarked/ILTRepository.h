@@ -18,5 +18,6 @@
 - (NSArray *)getCoreDataItems;
 - (void)deleteItem:(NSIndexPath *)index;
 - (NSFetchedResultsController *)getFetchedResultsController;
+- (void)nextLoading;
 
 @end
