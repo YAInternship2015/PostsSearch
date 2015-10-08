@@ -18,19 +18,8 @@
 @implementation ILTCustomerTableViewCell
 @synthesize imageView;
 - (void)setupWithItem:(ILTInstagramsPostes *)item {
-    int height = [item.sizeHeight intValue];
-    int width = [item.sizeWidtch intValue];
-    CGRect frameRect = _textView.frame;
-   // frameRect.size.height = height;
-    frameRect.size.width = 600 - width;
-    _textView.frame = frameRect;
-    frameRect = imageView.frame;
-    frameRect.size.height = height;
-    frameRect.size.width = width;
-    imageView.frame = frameRect;
     imageView.image = [item getImage];
     _textView.text = [item comentText];
-    
 }
 
 @end

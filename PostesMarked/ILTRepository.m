@@ -24,6 +24,7 @@
     if (self) {
         _context = [NSManagedObjectContext MR_context];
         _fetchedResultsController = [ILTInstagramsPostes MR_fetchAllSortedBy:@"id" ascending:YES withPredicate:nil groupBy:nil delegate:self];
+        _itemsOfTag = [[NSMutableArray alloc]initWithArray:[ILTInstagramsPostes MR_findAll]];
     }
     return self;
 }
@@ -39,6 +40,7 @@
         ILTInstagramsPostes *item = nil;
         if (itemExist == nil) {
             item = [ILTInstagramsPostes MR_createEntityInContext:_context];
+            [_itemsOfTag addObject:item];
         }
         else {
             item = itemExist;
@@ -55,15 +57,17 @@
     }
 }
 
-- (NSArray *)getCoreDataItems {
-    return [ILTInstagramsPostes MR_findAll];
+- (NSMutableArray *)getCoreDataItems {
+    return _itemsOfTag;
 }
 #pragma mark - delete item from repository
 
 - (void)deleteItem:(NSIndexPath *)index {
+    [_itemsOfTag removeObjectAtIndex:[index row]];
     ILTInstagramsPostes *item = [_fetchedResultsController objectAtIndexPath:index];
-    [item MR_deleteEntity];
-    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+    [item MR_deleteEntityInContext:_context];
+    [_context MR_saveToPersistentStoreWithCompletion:nil ];
+
 }
 
 

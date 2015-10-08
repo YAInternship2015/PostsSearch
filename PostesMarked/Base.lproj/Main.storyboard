@@ -84,43 +84,43 @@
         <scene sceneID="2Qr-LM-x7D">
             <objects>
                 <tableViewController id="jI3-2R-1Wh" customClass="ILTTagsShowTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" id="4NJ-38-t7o">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" id="4NJ-38-t7o">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="110" id="qes-up-CJI" customClass="ILTCustomerTableViewCell">
-                                <rect key="frame" x="0.0" y="92" width="600" height="110"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="redraw" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="155" id="qes-up-CJI" customClass="ILTCustomerTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="155"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qes-up-CJI" id="kgz-1E-YJx">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="109"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-Mb-8En">
-                                            <rect key="frame" x="5" y="3" width="124" height="100"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="124" id="IKl-bU-oun"/>
-                                            </constraints>
-                                        </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IP6-S0-Aa6">
-                                            <rect key="frame" x="143" y="3" width="460" height="102"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" layoutMarginsFollowReadableWidth="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IP6-S0-Aa6">
+                                            <rect key="frame" x="152" y="0.0" width="460" height="154"/>
                                             <animations/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sGo-Mb-8En">
+                                            <rect key="frame" x="1" y="0.0" width="150" height="154"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="O4A-L5-kEq"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="IP6-S0-Aa6" firstAttribute="leading" secondItem="sGo-Mb-8En" secondAttribute="trailing" constant="14" id="K8I-z5-igl"/>
-                                        <constraint firstItem="IP6-S0-Aa6" firstAttribute="top" secondItem="sGo-Mb-8En" secondAttribute="top" id="OqD-e9-inW"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="sGo-Mb-8En" secondAttribute="bottom" constant="-2" id="SQ3-fU-hOm"/>
-                                        <constraint firstItem="IP6-S0-Aa6" firstAttribute="centerY" secondItem="kgz-1E-YJx" secondAttribute="centerY" id="cO4-1f-akA"/>
-                                        <constraint firstItem="sGo-Mb-8En" firstAttribute="top" secondItem="kgz-1E-YJx" secondAttribute="topMargin" constant="-5" id="lyy-8h-74P"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="IP6-S0-Aa6" secondAttribute="trailing" constant="-11" id="tSv-5U-9yA"/>
-                                        <constraint firstItem="sGo-Mb-8En" firstAttribute="leading" secondItem="kgz-1E-YJx" secondAttribute="leadingMargin" constant="-3" id="wnV-9b-dIs"/>
+                                        <constraint firstItem="sGo-Mb-8En" firstAttribute="centerY" secondItem="kgz-1E-YJx" secondAttribute="centerY" id="1ay-v3-tMr"/>
+                                        <constraint firstItem="sGo-Mb-8En" firstAttribute="leading" secondItem="kgz-1E-YJx" secondAttribute="leadingMargin" constant="-7" id="Ha7-LT-7S7"/>
+                                        <constraint firstAttribute="bottom" secondItem="sGo-Mb-8En" secondAttribute="bottom" id="ZjZ-0A-jfs"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="IP6-S0-Aa6" secondAttribute="trailing" constant="-20" id="aFI-nH-J6J"/>
+                                        <constraint firstItem="IP6-S0-Aa6" firstAttribute="leading" secondItem="sGo-Mb-8En" secondAttribute="trailing" constant="1" id="ajo-Lm-Pto"/>
+                                        <constraint firstItem="sGo-Mb-8En" firstAttribute="bottom" secondItem="IP6-S0-Aa6" secondAttribute="bottom" id="iCf-ZC-uBF"/>
+                                        <constraint firstItem="IP6-S0-Aa6" firstAttribute="top" secondItem="sGo-Mb-8En" secondAttribute="top" id="lIU-y4-Ulp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>

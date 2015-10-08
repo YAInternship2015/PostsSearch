@@ -66,11 +66,5 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    ILTInstagramsPostes *item = [[_repository getCoreDataItems] objectAtIndex:indexPath.row];
-    return [item.sizeHeight intValue];
-}
-
 @end
 
