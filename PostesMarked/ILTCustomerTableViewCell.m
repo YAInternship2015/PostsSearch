@@ -16,7 +16,11 @@
 @end
 
 @implementation ILTCustomerTableViewCell
+
 @synthesize imageView;
+
+#pragma mark - set image and text in cell 
+
 - (void)setupWithItem:(ILTInstagramsPostes *)item {
     imageView.image = [item getImage];
     _textView.text = [item comentText];

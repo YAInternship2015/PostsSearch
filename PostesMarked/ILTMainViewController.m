@@ -20,14 +20,21 @@
 
 @implementation ILTMainViewController
 
+#pragma mark - initiallization connect past loading controller
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _networkConnection = [[ILTNetworkConnection alloc] init];
 }
 
+#pragma mark - warning about authentification 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - started searching information 
+
 - (IBAction)startSearchTags:(UIButton *)sender {
     if (_networkConnection.accessToken  == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -41,14 +48,17 @@
         [ _networkConnection requestTags:nil tagForSearch:_textField.text];
     }
 }
+
+#pragma mark - send data another controllerl 
+
 -(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"login"]) {
-        ILTLoginWebViewController * login = (ILTLoginWebViewController *) [segue destinationViewController];
+        ILTLoginWebViewController * login = (ILTLoginWebViewController *)[segue destinationViewController];
         login.networkConnection = _networkConnection;
     }
     if ([[segue identifier] isEqualToString:@"showTags"]) {
-        ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *) [segue destinationViewController];
+        ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *)[segue destinationViewController];
         tagsShow.repository = _networkConnection.repository;
     }
 }

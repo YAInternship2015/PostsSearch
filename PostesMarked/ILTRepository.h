@@ -12,9 +12,9 @@
 
 @interface ILTRepository : NSObject <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, weak) id <ILTSendedDataDelegate> delegate;
-@property (nonatomic,strong) NSFetchedResultsController *fetchedResultsController;
-- (void)saveDataFromNetwork: (NSArray *)array;
+@property (nonatomic, weak) id<ILTSendedDataDelegate> delegate;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+- (void)saveDataFromNetwork:(NSArray *)array;
 - (NSArray *)getCoreDataItems;
 - (void)deleteItem:(NSIndexPath *)index;
 - (NSFetchedResultsController *)getFetchedResultsController;

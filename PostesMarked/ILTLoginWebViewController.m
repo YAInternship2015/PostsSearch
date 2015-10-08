@@ -10,11 +10,9 @@
 #import "Defines.h"
 
 
-
 @interface ILTLoginWebViewController () 
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
-
 
 @end
 
@@ -24,19 +22,13 @@
 
 -(void)viewDidLoad {
     self.webView.delegate = self;
-   // _networkConnection = [[ILTNetworkConnection alloc]init];
-   // NSString *scopeStr = @"scope=likes+comments";
-    
-   // NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&display=touch&%@&redirect_uri=http://localhost&response_type=code", kClientID, scopeStr];
-    
-    [self.webView loadRequest:[_networkConnection representRequest:[_networkConnection getURlForAuthintification]]];//[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [self.webView loadRequest:[_networkConnection representRequest:[_networkConnection getURlForAuthintification]]];
 }
 
+#pragma mark - webView starting and load request
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if ([[[request URL] host] isEqualToString:@"localhost"]) {
-        
-        // Extract oauth_verifier from URL query
         NSString* verifier = nil;
         NSArray* urlParams = [[[request URL] query] componentsSeparatedByString:@"&"];
         for (NSString* param in urlParams) {
@@ -47,14 +39,13 @@
                 break;
             }
         }
-        
         if (verifier) {
-            NSString *dataString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",kClientID,kClientSecret,kRedirectURI,verifier];
+            NSString *dataString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@", kClientID, kClientSecret,kRedirectURI, verifier];
             NSString *url = [NSString stringWithFormat:@"https://api.instagram.com/oauth/access_token"];
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
             [request setHTTPMethod:@"POST"];
             [request setHTTPBody:[dataString dataUsingEncoding:NSUTF8StringEncoding]];
-            _networkConnection.tokenRequestConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+            _networkConnection.tokenRequestConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
             _networkConnection.data = [[NSMutableData alloc] init];
         }
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -63,9 +54,13 @@
     return YES;
 }
 
+#pragma mark - connection with server
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [_networkConnection addDataFromNetwork:data];
 }
+
+#pragma mark - if error connection show message 
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -75,6 +70,8 @@
                                           otherButtonTitles:nil];
     [alert show];
 }
+
+#pragma mark - set token
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [_networkConnection setToken];

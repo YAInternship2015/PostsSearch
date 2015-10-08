@@ -19,6 +19,8 @@
 
 @implementation ILTRepository
 
+#pragma mark - init item
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -29,11 +31,11 @@
     return self;
 }
 
-# pragma mark - save data from network 20 members
+#pragma mark - save data from network 20 members
 
 - (void)saveDataFromNetwork:(NSArray *)dictionary {
     NSArray *dataTags = [[NSArray alloc]initWithArray:dictionary];
-    for (int i = 0; i < dataTags.count; i ++) {
+    for (int i = 0; i < dataTags.count; i++) {
         ILTInstagramsPostes *itemExist = nil;
         NSDictionary *tag = [dataTags objectAtIndex:i];
         itemExist = [ILTInstagramsPostes MR_findFirstByAttribute:@"id" withValue:[tag objectForKey:@"id"]];
@@ -57,9 +59,12 @@
     }
 }
 
+#pragma mark - get items of repository 
+
 - (NSMutableArray *)getCoreDataItems {
     return _itemsOfTag;
 }
+
 #pragma mark - delete item from repository
 
 - (void)deleteItem:(NSIndexPath *)index {
@@ -67,13 +72,15 @@
     ILTInstagramsPostes *item = [_fetchedResultsController objectAtIndexPath:index];
     [item MR_deleteEntityInContext:_context];
     [_context MR_saveToPersistentStoreWithCompletion:nil ];
-
 }
 
+#pragma mark - loading next part of data
 
 - (void)nextLoading {
     [self.delegate requestTags:[self.delegate nextPage] tagForSearch:nil];
 }
+
+#pragma mark - get fetched results controller 
 
 - (NSFetchedResultsController *)getFetchedResultsController {
     return _fetchedResultsController;

@@ -15,11 +15,11 @@
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-
 @end
 
 @implementation ILTTagsShowTableViewController
 
+#pragma mark - setup fetch controller after loaded controller 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,7 +49,7 @@
     return cell;
 }
 
-#pragma mark - renew talbe
+#pragma mark - renew data for table
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView reloadData];
@@ -66,8 +66,10 @@
     }
 }
 
+#pragma mark - fetch new data when all view 
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == ([[_repository getCoreDataItems]count]-5)) {
+    if (indexPath.row == ([[_repository getCoreDataItems] count] - 5)) {
         [_repository nextLoading];
     }
 }
