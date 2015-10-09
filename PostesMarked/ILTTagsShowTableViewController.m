@@ -9,11 +9,9 @@
 #import "ILTTagsShowTableViewController.h"
 #import <CoreData/CoreData.h>
 #import "ILTCustomerTableViewCell.h"
+#import "Defines.h"
 
 @interface ILTTagsShowTableViewController () <NSFetchedResultsControllerDelegate>
-
-#warning зачем вью контроллеру хранить fetchedResultsController? Он же не обращается к нему напрямую за данными. А делегат fetchedResultsController'у можно прокинуть через какой-нибудь метод
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -23,8 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _fetchedResultsController = [_repository getFetchedResultsController];
-    [_fetchedResultsController setDelegate:self];
+    [[_repository getFetchedResultsController] setDelegate:self];
 }
 
 #pragma mark - Table view data source
@@ -36,14 +33,14 @@
 #pragma mark - Namber of rows
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return[[_repository getCoreDataItems]count];
+    return[[_repository numberOfItems]count];
 }
 
 #pragma mark - Cell review
 
 - (ILTCustomerTableViewCell *)tableView:(UITableView *)tableView
        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ILTInstagramsPostes *item = [[_repository getCoreDataItems] objectAtIndex:indexPath.row];
+    ILTInstagramPoste *item = [[_repository numberOfItems] objectAtIndex:indexPath.row];
     ILTCustomerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell" forIndexPath:indexPath];
     [cell setupWithItem:item];
     return cell;
@@ -61,7 +58,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [_repository deleteItem:indexPath];
+        [_repository deleteItemAtIndexPath:indexPath];
         [self.tableView endUpdates];
     }
 }
@@ -69,10 +66,10 @@
 #pragma mark - fetch new data when all view 
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-#warning цифру 5 надо объявить константой с именем
-    if (indexPath.row == ([[_repository getCoreDataItems] count] - 5)) {
-        [_repository nextLoading];
+    if (indexPath.row == ([[_repository numberOfItems] count] - POINTOFLOADINGNEXTDATA)) {
+        [_repository.delegate loadNextPage];
     }
 }
+
 @end
 

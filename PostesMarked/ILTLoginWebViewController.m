@@ -22,7 +22,7 @@
 
 -(void)viewDidLoad {
     self.webView.delegate = self;
-    [self.webView loadRequest:[_networkConnection representRequest:[_networkConnection getURlForAuthintification]]];
+    [self.webView loadRequest:[_networkConnection representRequest:[_networkConnection urlForAuthentification]]];
 }
 
 #pragma mark - webView starting and load request
@@ -63,9 +63,8 @@
 #pragma mark - if error connection show message 
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-#warning текст нужно вынести в Localizable.strings
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:[NSString stringWithFormat:@"%@", error]
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+                                                    message:[NSString stringWithFormat:NSLocalizedString(@"%@", nil), error]
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];

@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#warning плозое имя протокола, переименуйте его
-@protocol ILTSendedDataDelegate <NSObject>
+@protocol ILTDataProviderDelegate <NSObject>
 
-@property (nonatomic, strong) NSString *nextPage;
 - (void)requestTags:(NSString *)url tagForSearch:(NSString *)tag;
+- (void)loadNextPage;
 
 @end

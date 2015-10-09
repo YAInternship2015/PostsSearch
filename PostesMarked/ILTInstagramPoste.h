@@ -12,12 +12,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ILTInstagramsPostes : NSManagedObject
+@interface ILTInstagramPoste : NSManagedObject
 
 - (UIImage *)getImage;
+- (void)fillData:(NSDictionary *)dictionary;
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "ILTInstagramsPostes+CoreDataProperties.h"
+#import "ILTInstagramPoste+CoreDataProperties.h"

@@ -27,20 +27,12 @@
     _networkConnection = [[ILTNetworkConnection alloc] init];
 }
 
-#pragma mark - warning about authentification 
-
-#warning этот метод не нужен
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - started searching information 
 
 - (IBAction)startSearchTags:(UIButton *)sender {
     if (_networkConnection.accessToken  == nil) {
-#warning тексты необходимо вынести в Localizable.strings
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Please, login to Instagram"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
+                                                        message: NSLocalizedString(@"Please, login to Instagram", nil)
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

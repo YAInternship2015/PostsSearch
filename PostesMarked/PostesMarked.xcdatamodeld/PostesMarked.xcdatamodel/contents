@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
-    <entity name="ILTInstagramsPostes" representedClassName="ILTInstagramsPostes" syncable="YES">
-        <attribute name="comentText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pathPicture" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sizeHeight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="sizeWidtch" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    <entity name="ILTInstagramPoste" representedClassName="ILTInstagramsPostes" syncable="YES">
+        <attribute name="commentText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ILTInstagramsPostes" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="ILTInstagramPoste" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

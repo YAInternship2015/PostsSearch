@@ -7,26 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ILTInstagramsPostes.h"
-#import "ILTSendedDataDelegate.h"
+#import "ILTInstagramPoste.h"
+#import "ILTDataProviderDelegate.h"
 
 @interface ILTRepository : NSObject <NSFetchedResultsControllerDelegate>
 
-#warning по сути данный delegate является источником данных, потому я бы его назвал dataProvider
-@property (nonatomic, weak) id<ILTSendedDataDelegate> delegate;
-#warning fetchedResultsController должен быть только в *.m
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-
+@property (nonatomic, weak) id<ILTDataProviderDelegate> delegate;
 - (void)saveDataFromNetwork:(NSArray *)array;
-
-#warning здесь вместо метода getCoreDataItems должен быть все тот же интерфейс numberOfItems и itemAtIndex или вроде того
-- (NSArray *)getCoreDataItems;
-#warning deleteItemAtIndexPath:
-- (void)deleteItem:(NSIndexPath *)index;
-
-#warning этот метод не нужен
+- (NSArray *)numberOfItems;
+- (void)deleteItemAtIndexPath:(NSIndexPath *)index;
 - (NSFetchedResultsController *)getFetchedResultsController;
-#warning loadNextPage
-- (void)nextLoading;
+//- (void)loadNextPage;
 
 @end

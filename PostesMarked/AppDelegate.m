@@ -8,13 +8,13 @@
 
 #import "AppDelegate.h"
 #import "MagicalRecord/MagicalRecord.h"
+#import "Defines.h"
 
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-#warning имя стора надо объявить константой
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"PostesMarked"];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:STORENAME];
     return YES;
 }
 
