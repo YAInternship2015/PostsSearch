@@ -19,12 +19,9 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) ILTRepository *repository;
 - (NSString *) urlForAuthentification;
-#warning создавать NSURLRequest из NSString лучше в категории к NSURLRequest
-- (NSURLRequest *) representRequest:(NSString *)url;
-- (void)addDataFromNetwork:(NSData *)data;
-#warning странный метод, название такое, будто это сеттер, но параметра нет
-- (void)setToken;
-- (void)requestTags:(NSString *)url tagForSearch:(NSString *)tag;
+- (void)saveDataFromNetwork:(NSData *)data;
+- (void)saveToken;
+- (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag;
 - (void)loadNextPage;
 
 @end

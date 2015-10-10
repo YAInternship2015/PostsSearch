@@ -20,7 +20,7 @@
 
 - (void)fillData:(NSDictionary *)dictionary {
     self.postID = [dictionary objectForKey:@"id"];
-    self.commentText = [dictionary objectForKey:@"caption.text"];
-    self.imageURLString = [dictionary objectForKey:@"images.low_resolution.url"];
+    self.commentText = [dictionary valueForKeyPath:@"caption.text"];
+    self.imageURLString = [dictionary valueForKeyPath:@"images.low_resolution.url"];
 }
 @end

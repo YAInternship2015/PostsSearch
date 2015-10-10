@@ -10,7 +10,7 @@
 
 @protocol ILTDataProviderDelegate <NSObject>
 
-- (void)requestTags:(NSString *)url tagForSearch:(NSString *)tag;
+- (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag;
 - (void)loadNextPage;
 
 @end

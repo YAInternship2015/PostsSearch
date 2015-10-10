@@ -8,6 +8,8 @@
 
 #import "ILTLoginWebViewController.h"
 #import "Defines.h"
+#import "NSURLRequest+ILTNetworkConnection.h"
+
 
 
 @interface ILTLoginWebViewController () 
@@ -22,7 +24,7 @@
 
 -(void)viewDidLoad {
     self.webView.delegate = self;
-    [self.webView loadRequest:[_networkConnection representRequest:[_networkConnection urlForAuthentification]]];
+    [self.webView loadRequest:[NSURLRequest  representRequest:[_networkConnection urlForAuthentification]]];
 }
 
 #pragma mark - webView starting and load request
@@ -57,7 +59,7 @@
 #pragma mark - connection with server
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [_networkConnection addDataFromNetwork:data];
+    [_networkConnection saveDataFromNetwork:data];
 }
 
 #pragma mark - if error connection show message 
@@ -74,7 +76,7 @@
 #pragma mark - set token
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [_networkConnection setToken];
+    [_networkConnection saveToken];
 }
 
 @end

@@ -21,6 +21,7 @@
 		EE50BBBD1BB71F1C00F4440E /* PostesMarkedUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BBBC1BB71F1C00F4440E /* PostesMarkedUITests.m */; };
 		EE50BBCB1BB71F5500F4440E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EE50BBCA1BB71F5500F4440E /* Podfile */; settings = {ASSET_TAGS = (); }; };
 		EE52D2541BC545FB007D91EF /* ILTInstagramPoste.m in Sources */ = {isa = PBXBuildFile; fileRef = EE52D2521BC545FB007D91EF /* ILTInstagramPoste.m */; settings = {ASSET_TAGS = (); }; };
+		EE648DD71BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = EE648DD61BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m */; settings = {ASSET_TAGS = (); }; };
 		EE93B9301BB980DF008FFEFD /* ILTLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EEA78B5D1BC39D8900DFCA85 /* ILTRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA78B5C1BC39D8900DFCA85 /* ILTRepository.m */; settings = {ASSET_TAGS = (); }; };
 		EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */; settings = {ASSET_TAGS = (); }; };
@@ -75,6 +76,8 @@
 		EE50BBCA1BB71F5500F4440E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EE52D2511BC545FB007D91EF /* ILTInstagramPoste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTInstagramPoste.h; sourceTree = "<group>"; };
 		EE52D2521BC545FB007D91EF /* ILTInstagramPoste.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTInstagramPoste.m; sourceTree = "<group>"; };
+		EE648DD51BC94A6F00D7941C /* NSURLRequest+ILTNetworkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+ILTNetworkConnection.h"; sourceTree = "<group>"; };
+		EE648DD61BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+ILTRepresentURLRequest.m"; sourceTree = "<group>"; };
 		EE93B92E1BB980DF008FFEFD /* ILTLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTLoginWebViewController.h; sourceTree = "<group>"; };
 		EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTLoginWebViewController.m; sourceTree = "<group>"; };
 		EE99F9821BB7258600207607 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 		EE50BB881BB71F1B00F4440E = {
 			isa = PBXGroup;
 			children = (
+				EE648DD51BC94A6F00D7941C /* NSURLRequest+ILTNetworkConnection.h */,
+				EE648DD61BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m */,
 				EE50BBCA1BB71F5500F4440E /* Podfile */,
 				EE50BB931BB71F1B00F4440E /* PostesMarked */,
 				EE50BBB01BB71F1C00F4440E /* PostesMarkedTests */,
@@ -403,6 +408,7 @@
 				EE1941461BC59ED400F435CE /* ILTTagsShowTableViewController.m in Sources */,
 				EE3ECB351BC835B70031DDE8 /* ILTInstagramPoste+CoreDataProperties.m in Sources */,
 				EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */,
+				EE648DD71BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m in Sources */,
 				EE1941491BC5A1F800F435CE /* ILTCustomerTableViewCell.m in Sources */,
 				EE50BBA21BB71F1C00F4440E /* PostesMarked.xcdatamodeld in Sources */,
 			);

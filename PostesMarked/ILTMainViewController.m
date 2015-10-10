@@ -39,7 +39,9 @@
         [alert show];
     }
     else {
-        [ _networkConnection requestTags:nil tagForSearch:_textField.text];
+        if (_textField.text != nil) {
+            [_networkConnection recieveDataFromServer:nil tagForSearch:_textField.text];
+        }
     }
 }
 

@@ -17,6 +17,6 @@
 - (NSArray *)numberOfItems;
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index;
 - (NSFetchedResultsController *)getFetchedResultsController;
-//- (void)loadNextPage;
+- (void)loadNextPage;
 
 @end
