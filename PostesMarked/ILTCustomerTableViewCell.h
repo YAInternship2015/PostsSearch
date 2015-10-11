@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ILTInstagramsPostes.h"
+#import "ILTInstagramPoste.h"
 
 @interface ILTCustomerTableViewCell : UITableViewCell
 
-- (void)setupWithItem:(ILTInstagramsPostes *)item;
+- (void)setupWithItem:(ILTInstagramPoste *)item;
 
 @end

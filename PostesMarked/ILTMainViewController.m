@@ -24,28 +24,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSUserDefaults standardUserDefaults] setObject:nil
+                                              forKey:@"nextPage"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil
+                                              forKey:@"accessToken"];
+    _textField.text = nil;
     _networkConnection = [[ILTNetworkConnection alloc] init];
-}
-
-#pragma mark - warning about authentification 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - started searching information 
 
 - (IBAction)startSearchTags:(UIButton *)sender {
-    if (_networkConnection.accessToken  == nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Please, login to Instagram"
+    if ([[NSUserDefaults standardUserDefaults]
+         objectForKey:@"accessToken"]  == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
+                                                        message: NSLocalizedString(@"Please, login to Instagram", nil)
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
     }
     else {
-        [ _networkConnection requestTags:nil tagForSearch:_textField.text];
+        if (![_textField.text isEqualToString:@""]) {
+            [_networkConnection recieveDataFromServer:nil tagForSearch:_textField.text];
+        }
     }
 }
 
@@ -53,10 +55,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"login"]) {
+    /*if ([[segue identifier] isEqualToString:@"login"]) {
         ILTLoginWebViewController * login = (ILTLoginWebViewController *)[segue destinationViewController];
         login.networkConnection = _networkConnection;
-    }
+    }*/
     if ([[segue identifier] isEqualToString:@"showTags"]) {
         ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *)[segue destinationViewController];
         tagsShow.repository = _networkConnection.repository;

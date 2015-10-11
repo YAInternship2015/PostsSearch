@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ILTSendedDataDelegate <NSObject>
+@protocol ILTDataProviderDelegate <NSObject>
 
-@property (nonatomic, strong) NSString *nextPage;
-- (void)requestTags:(NSString *)url tagForSearch:(NSString *)tag;
+- (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag;
+- (void)loadNextPage;
 
 @end

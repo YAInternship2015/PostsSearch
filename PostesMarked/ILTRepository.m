@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) NSMutableArray *itemsOfTag;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -25,59 +26,51 @@
     self = [super init];
     if (self) {
         _context = [NSManagedObjectContext MR_context];
-        _fetchedResultsController = [ILTInstagramsPostes MR_fetchAllSortedBy:@"id" ascending:YES withPredicate:nil groupBy:nil delegate:self];
-        _itemsOfTag = [[NSMutableArray alloc]initWithArray:[ILTInstagramsPostes MR_findAll]];
+        _fetchedResultsController = [ILTInstagramPoste MR_fetchAllSortedBy:@"postID" ascending:YES withPredicate:nil groupBy:nil delegate:self];
+        _itemsOfTag = [[NSMutableArray alloc]initWithArray:[ILTInstagramPoste MR_findAll]];
     }
     return self;
 }
 
 #pragma mark - save data from network 20 members
 
-- (void)saveDataFromNetwork:(NSArray *)dictionary {
-    NSArray *dataTags = [[NSArray alloc]initWithArray:dictionary];
-    for (int i = 0; i < dataTags.count; i++) {
-        ILTInstagramsPostes *itemExist = nil;
-        NSDictionary *tag = [dataTags objectAtIndex:i];
-        itemExist = [ILTInstagramsPostes MR_findFirstByAttribute:@"id" withValue:[tag objectForKey:@"id"]];
-        ILTInstagramsPostes *item = nil;
+- (void)saveDataFromNetwork:(NSArray *)array {
+    NSArray *dataPosts = [[NSArray alloc]initWithArray:array];
+    for (NSDictionary *itemPost in dataPosts) {
+        ILTInstagramPoste *itemExist = nil;
+        itemExist = [ILTInstagramPoste MR_findFirstByAttribute:@"postID" withValue:[itemPost objectForKey:@"id"]];
+        ILTInstagramPoste *item = nil;
         if (itemExist == nil) {
-            item = [ILTInstagramsPostes MR_createEntityInContext:_context];
+            item = [ILTInstagramPoste MR_createEntityInContext:_context];
             [_itemsOfTag addObject:item];
         }
         else {
             item = itemExist;
         }
-        item.id = [tag objectForKey:@"id"];
-        NSDictionary *captionText = [tag objectForKey:@"caption"];
-        item.comentText = [captionText objectForKey:@"text"];
-        NSDictionary *images = [tag objectForKey:@"images"];
-        NSDictionary *image = [images objectForKey:@"low_resolution"];
-        item.pathPicture = [image objectForKey:@"url"];
-        item.sizeHeight = [image objectForKey:@"height"];
-        item.sizeWidtch = [image objectForKey:@"width"];
-        [_context MR_saveToPersistentStoreAndWait];
+        [item fillData:itemPost];
     }
+    [_context MR_saveToPersistentStoreAndWait];
 }
 
 #pragma mark - get items of repository 
 
-- (NSMutableArray *)getCoreDataItems {
+- (NSMutableArray *)numberOfItems {
     return _itemsOfTag;
 }
 
 #pragma mark - delete item from repository
 
-- (void)deleteItem:(NSIndexPath *)index {
+- (void)deleteItemAtIndexPath:(NSIndexPath *)index {
     [_itemsOfTag removeObjectAtIndex:[index row]];
-    ILTInstagramsPostes *item = [_fetchedResultsController objectAtIndexPath:index];
-    [item MR_deleteEntityInContext:_context];
-    [_context MR_saveToPersistentStoreWithCompletion:nil ];
+    ILTInstagramPoste *item = [_fetchedResultsController objectAtIndexPath:index];
+    [item MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
 #pragma mark - loading next part of data
 
-- (void)nextLoading {
-    [self.delegate requestTags:[self.delegate nextPage] tagForSearch:nil];
+ - (void)loadNextPage {
+    [self.delegate loadNextPage];
 }
 
 #pragma mark - get fetched results controller 
