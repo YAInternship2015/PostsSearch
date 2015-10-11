@@ -11,6 +11,6 @@
 
 @interface ILTLoginWebViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
+//@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
 
 @end

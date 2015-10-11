@@ -15,6 +15,8 @@
 @interface ILTLoginWebViewController () 
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic, strong) NSURLConnection *connection;
 
 @end
 
@@ -24,7 +26,7 @@
 
 -(void)viewDidLoad {
     self.webView.delegate = self;
-    [self.webView loadRequest:[NSURLRequest  representRequest:[_networkConnection urlForAuthentification]]];
+    [self.webView loadRequest:[NSURLRequest  representRequest:[NSString stringWithFormat:AUTHENTIFICATION, kClientID, @"scope=likes+comments"]]];
 }
 
 #pragma mark - webView starting and load request
@@ -47,8 +49,10 @@
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
             [request setHTTPMethod:@"POST"];
             [request setHTTPBody:[dataString dataUsingEncoding:NSUTF8StringEncoding]];
-            _networkConnection.tokenRequestConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-            _networkConnection.data = [[NSMutableData alloc] init];
+            //_networkConnection.tokenRequestConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+           // _networkConnection.data = [[NSMutableData alloc] init];
+            _connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+            _data = [[NSMutableData alloc]init];
         }
         [self dismissViewControllerAnimated:YES completion:nil];
         return NO;
@@ -59,7 +63,7 @@
 #pragma mark - connection with server
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [_networkConnection saveDataFromNetwork:data];
+    [_data appendData:data];
 }
 
 #pragma mark - if error connection show message 
@@ -76,7 +80,17 @@
 #pragma mark - set token
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [_networkConnection saveToken];
+    NSError *jsonError = nil;
+    NSString *accessToken = nil;
+    id jsonData = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:&jsonError];
+    if(jsonData && [NSJSONSerialization isValidJSONObject:jsonData])
+    {
+        accessToken = [jsonData objectForKey:@"access_token"];
+    }
+    if (accessToken != nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:accessToken
+                                                  forKey:@"accessToken"];
+    }
 }
 
 @end

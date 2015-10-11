@@ -24,13 +24,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSUserDefaults standardUserDefaults] setObject:nil
+                                              forKey:@"nextPage"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil
+                                              forKey:@"accessToken"];
+    _textField.text = nil;
     _networkConnection = [[ILTNetworkConnection alloc] init];
 }
 
 #pragma mark - started searching information 
 
 - (IBAction)startSearchTags:(UIButton *)sender {
-    if (_networkConnection.accessToken  == nil) {
+    if ([[NSUserDefaults standardUserDefaults]
+         objectForKey:@"accessToken"]  == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
                                                         message: NSLocalizedString(@"Please, login to Instagram", nil)
                                                        delegate:nil
@@ -39,7 +45,7 @@
         [alert show];
     }
     else {
-        if (_textField.text != nil) {
+        if (![_textField.text isEqualToString:@""]) {
             [_networkConnection recieveDataFromServer:nil tagForSearch:_textField.text];
         }
     }
@@ -49,10 +55,10 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"login"]) {
+    /*if ([[segue identifier] isEqualToString:@"login"]) {
         ILTLoginWebViewController * login = (ILTLoginWebViewController *)[segue destinationViewController];
         login.networkConnection = _networkConnection;
-    }
+    }*/
     if ([[segue identifier] isEqualToString:@"showTags"]) {
         ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *)[segue destinationViewController];
         tagsShow.repository = _networkConnection.repository;

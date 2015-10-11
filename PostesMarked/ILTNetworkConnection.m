@@ -39,28 +39,12 @@
     return [NSString stringWithFormat:AUTHENTIFICATION, kClientID, @"scope=likes+comments"];
 }
 
-#pragma mark - add data
-
-- (void)saveDataFromNetwork:(NSData *)addData {
-    [_data appendData:addData];
-}
-
-#pragma mark - set token for next request
-
-- (void)saveToken {
-    NSError *jsonError = nil;
-    id jsonData = [NSJSONSerialization JSONObjectWithData:self.data options:0 error:&jsonError];
-    if(jsonData && [NSJSONSerialization isValidJSONObject:jsonData])
-    {
-        _accessToken = [jsonData objectForKey:@"access_token"];
-    }
-}
-
 #pragma mark - reguest data
 
 - (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag {
     if (urlServer == nil) {
-        urlServer = [NSString stringWithFormat:TAGREQUEST, tag, _accessToken];
+        urlServer = [NSString stringWithFormat:TAGREQUEST, tag, [[NSUserDefaults standardUserDefaults]
+                                                                 objectForKey:@"accessToken"]];
         _nextPage = nil;
     }
     NSURL *urlRequest;
@@ -76,6 +60,8 @@
    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *serializedData = (NSDictionary *)responseObject;
         _nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
+       [[NSUserDefaults standardUserDefaults] setObject:_nextPage
+                                                 forKey:@"nextPage"];
             NSString *newNextMaxId = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_max_id"]];
             if (![newNextMaxId isEqualToString:_nextMaxId]) {
                 NSArray *data = [serializedData objectForKey:@"data"];
@@ -97,7 +83,11 @@
 #pragma mark - load next page
 
 - (void)loadNextPage {
-    [self recieveDataFromServer:_nextPage tagForSearch:nil];
+    NSString *nextPage = [[NSUserDefaults standardUserDefaults]
+                          objectForKey:@"nextPage"];
+    if (nextPage != nil) {
+        [self recieveDataFromServer:nextPage tagForSearch:nil];
+    }
 }
 
 @end

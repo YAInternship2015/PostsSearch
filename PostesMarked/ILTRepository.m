@@ -63,8 +63,8 @@
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index {
     [_itemsOfTag removeObjectAtIndex:[index row]];
     ILTInstagramPoste *item = [_fetchedResultsController objectAtIndexPath:index];
-    [item MR_deleteEntityInContext:_context];
-    [_context MR_saveToPersistentStoreWithCompletion:nil ];
+    [item MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
 #pragma mark - loading next part of data
