@@ -35,6 +35,7 @@
 
 #pragma mark - get url for authentification
 
+#warning для чего нужно это свойство я не особо понял. Если оно никем не используется, то удалите его
 - (NSString *)urlForAuthentification {
     return [NSString stringWithFormat:AUTHENTIFICATION, kClientID, @"scope=likes+comments"];
 }
@@ -59,6 +60,7 @@
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *serializedData = (NSDictionary *)responseObject;
+#warning используйте weakSelf внутри блоков вместо strong ссылки на self
         _nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
        [[NSUserDefaults standardUserDefaults] setObject:_nextPage
                                                  forKey:@"nextPage"];

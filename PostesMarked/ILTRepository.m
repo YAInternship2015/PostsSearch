@@ -13,6 +13,7 @@
 @interface ILTRepository ()
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
+#warning я уже писал, что массив itemsOfTag не нужен. Данные получать необходимо напрямую из выборки NSFetchedResultsController'а через методы fetchedObjects или objectAtIndexPath:
 @property (nonatomic, strong) NSMutableArray *itemsOfTag;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
@@ -63,6 +64,7 @@
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index {
     [_itemsOfTag removeObjectAtIndex:[index row]];
     ILTInstagramPoste *item = [_fetchedResultsController objectAtIndexPath:index];
+#warning правильнее удалять объект в том же контексте, откуда собственно и получен. То есть в self.fetchedResultsController.managedObjectContext. Иначе при многопоточной работе могут возникнуть большие проблемы
     [item MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
