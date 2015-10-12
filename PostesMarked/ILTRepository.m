@@ -13,7 +13,6 @@
 @interface ILTRepository ()
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
-@property (nonatomic, strong) NSMutableArray *itemsOfTag;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
@@ -26,8 +25,7 @@
     self = [super init];
     if (self) {
         _context = [NSManagedObjectContext MR_context];
-        _fetchedResultsController = [ILTInstagramPoste MR_fetchAllSortedBy:@"postID" ascending:YES withPredicate:nil groupBy:nil delegate:self];
-        _itemsOfTag = [[NSMutableArray alloc]initWithArray:[ILTInstagramPoste MR_findAll]];
+       _fetchedResultsController = [ILTInstagramPoste MR_fetchAllSortedBy:@"postID" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
     }
     return self;
 }
@@ -42,29 +40,28 @@
         ILTInstagramPoste *item = nil;
         if (itemExist == nil) {
             item = [ILTInstagramPoste MR_createEntityInContext:_context];
-            [_itemsOfTag addObject:item];
+            //[_itemsOfTag addObject:item];
         }
         else {
             item = itemExist;
         }
-        [item fillData:itemPost];
+        [item updateWithDataDictionary:itemPost];
     }
     [_context MR_saveToPersistentStoreAndWait];
 }
 
-#pragma mark - get items of repository 
+#pragma mark - get item of repository 
 
-- (NSMutableArray *)numberOfItems {
-    return _itemsOfTag;
+- (ILTInstagramPoste *)memberOfItem:(NSIndexPath *)index {
+    return [_fetchedResultsController objectAtIndexPath:index];
 }
 
 #pragma mark - delete item from repository
 
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index {
-    [_itemsOfTag removeObjectAtIndex:[index row]];
     ILTInstagramPoste *item = [_fetchedResultsController objectAtIndexPath:index];
-    [item MR_deleteEntityInContext:[NSManagedObjectContext MR_defaultContext]];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+    [item MR_deleteEntityInContext:_context];
+    [_context MR_saveToPersistentStoreAndWait];
 }
 
 #pragma mark - loading next part of data
@@ -73,10 +70,16 @@
     [self.delegate loadNextPage];
 }
 
-#pragma mark - get fetched results controller 
+#pragma mark - get count members in repository
 
-- (NSFetchedResultsController *)getFetchedResultsController {
-    return _fetchedResultsController;
+- (NSUInteger)countOfItems {
+    return  [ILTInstagramPoste MR_countOfEntitiesWithContext:_context];
+}
+
+#pragma  mark - set delegate 
+
+- (void)setFetchedResultsControllerDelegate:(id <NSFetchedResultsControllerDelegate>) delegateTable {
+    [_fetchedResultsController setDelegate:delegateTable];
 }
 
 @end

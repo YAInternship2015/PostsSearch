@@ -8,19 +8,25 @@
 
 #import "ILTInstagramPoste.h"
 
+
+@interface  ILTInstagramPoste ()
+
+@end
+
 @implementation ILTInstagramPoste
-
-#pragma mark - get image
-
-- (UIImage *)getImage {
-    return  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageURLString]]];
-}
 
 #pragma mark - fill data
 
-- (void)fillData:(NSDictionary *)dictionary {
+- (void)updateWithDataDictionary:(NSDictionary *)dictionary {
     self.postID = [dictionary objectForKey:@"id"];
     self.commentText = [dictionary valueForKeyPath:@"caption.text"];
     self.imageURLString = [dictionary valueForKeyPath:@"images.low_resolution.url"];
 }
+
+#pragma mark - return Url images
+
+- (NSString *) retrurnUrlString {
+    return self.imageURLString;
+}
+
 @end

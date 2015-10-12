@@ -9,7 +9,7 @@
 #import "ILTTagsShowTableViewController.h"
 #import <CoreData/CoreData.h>
 #import "ILTCustomerTableViewCell.h"
-#import "Defines.h"
+#import "ILTDefines.h"
 
 @interface ILTTagsShowTableViewController () <NSFetchedResultsControllerDelegate>
 
@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[_repository getFetchedResultsController] setDelegate:self];
+    [_repository setFetchedResultsControllerDelegate:self];
 }
 
 #pragma mark - Table view data source
@@ -33,14 +33,14 @@
 #pragma mark - Namber of rows
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return[[_repository numberOfItems]count];
+    return[_repository countOfItems];
 }
 
 #pragma mark - Cell review
 
 - (ILTCustomerTableViewCell *)tableView:(UITableView *)tableView
        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ILTInstagramPoste *item = [[_repository numberOfItems] objectAtIndex:indexPath.row];
+    ILTInstagramPoste *item = [_repository memberOfItem:indexPath];
     ILTCustomerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell" forIndexPath:indexPath];
     [cell setupWithItem:item];
     return cell;
@@ -66,7 +66,7 @@
 #pragma mark - fetch new data when all view 
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == ([[_repository numberOfItems] count] - POINTOFLOADINGNEXTDATA)) {
+    if (indexPath.row == ([_repository countOfItems] - POINTOFLOADINGNEXTDATA)) {
         [_repository.delegate loadNextPage];
     }
 }

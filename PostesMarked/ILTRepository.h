@@ -10,13 +10,13 @@
 #import "ILTInstagramPoste.h"
 #import "ILTDataProviderDelegate.h"
 
-@interface ILTRepository : NSObject <NSFetchedResultsControllerDelegate>
+@interface ILTRepository : NSObject
 
 @property (nonatomic, weak) id<ILTDataProviderDelegate> delegate;
 - (void)saveDataFromNetwork:(NSArray *)array;
-- (NSArray *)numberOfItems;
+- (NSUInteger)countOfItems;
+- (ILTInstagramPoste *)memberOfItem:(NSIndexPath *)index;
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index;
-- (NSFetchedResultsController *)getFetchedResultsController;
 - (void)loadNextPage;
-
+- (void)setFetchedResultsControllerDelegate:(id <NSFetchedResultsControllerDelegate>) delegateTable;
 @end

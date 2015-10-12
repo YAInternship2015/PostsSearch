@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EE1941461BC59ED400F435CE /* ILTTagsShowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1941451BC59ED400F435CE /* ILTTagsShowTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		EE1941491BC5A1F800F435CE /* ILTCustomerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1941481BC5A1F800F435CE /* ILTCustomerTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		EE2E36E51BCC2D4400D44914 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = EE2E36E41BCC2D4400D44914 /* placeholder.png */; settings = {ASSET_TAGS = (); }; };
+		EE2E36E81BCC46F300D44914 /* ILTAccessTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2E36E71BCC46F300D44914 /* ILTAccessTokenManager.m */; settings = {ASSET_TAGS = (); }; };
 		EE3ECB351BC835B70031DDE8 /* ILTInstagramPoste+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3ECB341BC835B70031DDE8 /* ILTInstagramPoste+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
 		EE50BB961BB71F1C00F4440E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB951BB71F1C00F4440E /* main.m */; };
 		EE50BB991BB71F1C00F4440E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50BB981BB71F1C00F4440E /* AppDelegate.m */; };
@@ -54,6 +56,9 @@
 		EE1941451BC59ED400F435CE /* ILTTagsShowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTTagsShowTableViewController.m; sourceTree = "<group>"; };
 		EE1941471BC5A1F800F435CE /* ILTCustomerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTCustomerTableViewCell.h; sourceTree = "<group>"; };
 		EE1941481BC5A1F800F435CE /* ILTCustomerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTCustomerTableViewCell.m; sourceTree = "<group>"; };
+		EE2E36E41BCC2D4400D44914 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		EE2E36E61BCC46F300D44914 /* ILTAccessTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTAccessTokenManager.h; sourceTree = "<group>"; };
+		EE2E36E71BCC46F300D44914 /* ILTAccessTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTAccessTokenManager.m; sourceTree = "<group>"; };
 		EE3ECB331BC835B70031DDE8 /* ILTInstagramPoste+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ILTInstagramPoste+CoreDataProperties.h"; sourceTree = "<group>"; };
 		EE3ECB341BC835B70031DDE8 /* ILTInstagramPoste+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ILTInstagramPoste+CoreDataProperties.m"; sourceTree = "<group>"; };
 		EE50BB911BB71F1B00F4440E /* PostesMarked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostesMarked.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +85,7 @@
 		EE648DD61BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+ILTRepresentURLRequest.m"; sourceTree = "<group>"; };
 		EE93B92E1BB980DF008FFEFD /* ILTLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTLoginWebViewController.h; sourceTree = "<group>"; };
 		EE93B92F1BB980DF008FFEFD /* ILTLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTLoginWebViewController.m; sourceTree = "<group>"; };
-		EE99F9821BB7258600207607 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		EE99F9821BB7258600207607 /* ILTDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ILTDefines.h; sourceTree = "<group>"; };
 		EEA78B5B1BC39D8800DFCA85 /* ILTRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTRepository.h; sourceTree = "<group>"; };
 		EEA78B5C1BC39D8900DFCA85 /* ILTRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILTRepository.m; sourceTree = "<group>"; };
 		EEDE3AAD1BBF043200ADB02B /* ILTNetworkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILTNetworkConnection.h; sourceTree = "<group>"; };
@@ -136,6 +141,7 @@
 				EE648DD51BC94A6F00D7941C /* NSURLRequest+ILTNetworkConnection.h */,
 				EE648DD61BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m */,
 				EE50BBCA1BB71F5500F4440E /* Podfile */,
+				EE2E36E41BCC2D4400D44914 /* placeholder.png */,
 				EE50BB931BB71F1B00F4440E /* PostesMarked */,
 				EE50BBB01BB71F1C00F4440E /* PostesMarkedTests */,
 				EE50BBBB1BB71F1C00F4440E /* PostesMarkedUITests */,
@@ -166,12 +172,14 @@
 				EEDE3AAE1BBF043300ADB02B /* ILTNetworkConnection.m */,
 				EE1941431BC5924A00F435CE /* ILTDataProviderDelegate.h */,
 				EE50BB9D1BB71F1C00F4440E /* Main.storyboard */,
-				EE99F9821BB7258600207607 /* Defines.h */,
+				EE99F9821BB7258600207607 /* ILTDefines.h */,
 				EE50BBA31BB71F1C00F4440E /* Assets.xcassets */,
 				EE50BBA51BB71F1C00F4440E /* LaunchScreen.storyboard */,
 				EE50BBA81BB71F1C00F4440E /* Info.plist */,
 				EE50BBA01BB71F1C00F4440E /* PostesMarked.xcdatamodeld */,
 				EE50BB941BB71F1B00F4440E /* Supporting Files */,
+				EE2E36E61BCC46F300D44914 /* ILTAccessTokenManager.h */,
+				EE2E36E71BCC46F300D44914 /* ILTAccessTokenManager.m */,
 			);
 			path = PostesMarked;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 				EE50BB8E1BB71F1B00F4440E /* Frameworks */,
 				EE50BB8F1BB71F1B00F4440E /* Resources */,
 				E55885544D2A67A58DEB981C /* Copy Pods Resources */,
+				2AAFD1BE6DB57833C3FEECB5 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -341,6 +350,7 @@
 				EE50BBA71BB71F1C00F4440E /* LaunchScreen.storyboard in Resources */,
 				EE50BBA41BB71F1C00F4440E /* Assets.xcassets in Resources */,
 				EE50BBCB1BB71F5500F4440E /* Podfile in Resources */,
+				EE2E36E51BCC2D4400D44914 /* placeholder.png in Resources */,
 				EE50BB9F1BB71F1C00F4440E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +372,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2AAFD1BE6DB57833C3FEECB5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		920295C2369D5DE2FAD11EA8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +432,7 @@
 				EE50BB961BB71F1C00F4440E /* main.m in Sources */,
 				EE1941461BC59ED400F435CE /* ILTTagsShowTableViewController.m in Sources */,
 				EE3ECB351BC835B70031DDE8 /* ILTInstagramPoste+CoreDataProperties.m in Sources */,
+				EE2E36E81BCC46F300D44914 /* ILTAccessTokenManager.m in Sources */,
 				EEDE3AAF1BBF043300ADB02B /* ILTNetworkConnection.m in Sources */,
 				EE648DD71BC94A6F00D7941C /* NSURLRequest+ILTRepresentURLRequest.m in Sources */,
 				EE1941491BC5A1F800F435CE /* ILTCustomerTableViewCell.m in Sources */,

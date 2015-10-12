@@ -7,16 +7,17 @@
 //
 
 #import "ILTLoginWebViewController.h"
-#import "Defines.h"
+#import "ILTDefines.h"
 #import "NSURLRequest+ILTNetworkConnection.h"
+#import "ILTAccessTokenManager.h"
 
 
-
-@interface ILTLoginWebViewController () 
+@interface ILTLoginWebViewController () <UIWebViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, strong) NSURLConnection *connection;
+@property (nonatomic, strong) ILTAccessTokenManager *manager;
 
 @end
 
@@ -27,6 +28,7 @@
 -(void)viewDidLoad {
     self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest  representRequest:[NSString stringWithFormat:AUTHENTIFICATION, kClientID, @"scope=likes+comments"]]];
+    _manager = [[ILTAccessTokenManager alloc]init];
 }
 
 #pragma mark - webView starting and load request
@@ -49,8 +51,6 @@
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
             [request setHTTPMethod:@"POST"];
             [request setHTTPBody:[dataString dataUsingEncoding:NSUTF8StringEncoding]];
-            //_networkConnection.tokenRequestConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-           // _networkConnection.data = [[NSMutableData alloc] init];
             _connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
             _data = [[NSMutableData alloc]init];
         }
@@ -72,7 +72,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
                                                     message:[NSString stringWithFormat:NSLocalizedString(@"%@", nil), error]
                                                    delegate:nil
-                                          cancelButtonTitle:@"OK"
+                                          cancelButtonTitle:NSLocalizedString(@"OK", nil)
                                           otherButtonTitles:nil];
     [alert show];
 }
@@ -88,8 +88,7 @@
         accessToken = [jsonData objectForKey:@"access_token"];
     }
     if (accessToken != nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:accessToken
-                                                  forKey:@"accessToken"];
+        [_manager setupAccessToken:accessToken];
     }
 }
 

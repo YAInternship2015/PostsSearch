@@ -10,11 +10,13 @@
 #import "ILTNetworkConnection.h"
 #import "ILTLoginWebViewController.h"
 #import "ILTTagsShowTableViewController.h"
+#import "ILTAccessTokenManager.h"
 
 @interface ILTMainViewController ()
 
 @property ( nonatomic, weak) IBOutlet UITextField *textField;
 @property (nonatomic, strong) ILTNetworkConnection *networkConnection;
+@property (nonatomic, strong) ILTAccessTokenManager *manager;
 
 @end
 
@@ -24,10 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSUserDefaults standardUserDefaults] setObject:nil
-                                              forKey:@"nextPage"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil
-                                              forKey:@"accessToken"];
+    _manager = [[ILTAccessTokenManager alloc]init];
+    [_manager setupAccessToken:nil];
+    [_manager setupNextPage:nil];
+    [_manager setupNextMaxId:nil];
     _textField.text = nil;
     _networkConnection = [[ILTNetworkConnection alloc] init];
 }
@@ -35,17 +37,16 @@
 #pragma mark - started searching information 
 
 - (IBAction)startSearchTags:(UIButton *)sender {
-    if ([[NSUserDefaults standardUserDefaults]
-         objectForKey:@"accessToken"]  == nil) {
+    if ([_manager fetchaccessToken]  == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
                                                         message: NSLocalizedString(@"Please, login to Instagram", nil)
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle: NSLocalizedString(@"OK", nil)
                                               otherButtonTitles:nil];
         [alert show];
     }
     else {
-        if (![_textField.text isEqualToString:@""]) {
+        if ([_textField.text length] > 0) {
             [_networkConnection recieveDataFromServer:nil tagForSearch:_textField.text];
         }
     }
@@ -55,13 +56,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
-    /*if ([[segue identifier] isEqualToString:@"login"]) {
-        ILTLoginWebViewController * login = (ILTLoginWebViewController *)[segue destinationViewController];
-        login.networkConnection = _networkConnection;
-    }*/
-    if ([[segue identifier] isEqualToString:@"showTags"]) {
-        ILTTagsShowTableViewController * tagsShow = (ILTTagsShowTableViewController *)[segue destinationViewController];
-        tagsShow.repository = _networkConnection.repository;
+        if ([[segue identifier] isEqualToString:@"showTags"]) {
+        ILTTagsShowTableViewController * tagsShowController = (ILTTagsShowTableViewController *)[segue destinationViewController];
+        tagsShowController.repository = _networkConnection.repository;
     }
 }
 

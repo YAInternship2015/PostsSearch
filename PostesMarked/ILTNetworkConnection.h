@@ -13,11 +13,6 @@
 
 @interface ILTNetworkConnection : NSObject <ILTDataProviderDelegate>
 
-@property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, strong) NSURLConnection *tokenRequestConnection;
 @property (nonatomic, strong) ILTRepository *repository;
-- (NSString *) urlForAuthentification;
-- (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag;
-- (void)loadNextPage;
 
 @end
