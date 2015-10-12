@@ -59,7 +59,7 @@
             if (![newNextMaxId isEqualToString:[_manager fetchNextMaxId]]) {
                 NSArray *data = [serializedData objectForKey:@"data"];
                 [_repository saveDataFromNetwork:data];
-                [_manager setupNextPage: newNextMaxId];
+                [_manager setupNextMaxId: newNextMaxId];
             }
        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
