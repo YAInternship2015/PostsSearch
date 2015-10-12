@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ILTNetworkConnection.h"
+//#import "ILTNetworkConnection.h"
 
-#warning поддержку протокола UIWebViewDelegate перенесите в *.m
-@interface ILTLoginWebViewController : UIViewController <UIWebViewDelegate>
-
-#warning закомментированный код надо удалить, и заодно импорт ILTNetworkConnection
-//@property (nonatomic, strong) ILTNetworkConnection *networkConnection;
+@interface ILTLoginWebViewController : UIViewController 
 
 @end

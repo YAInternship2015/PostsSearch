@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MagicalRecord/MagicalRecord.h"
-#import "Defines.h"
+#import "ILTDefines.h"
 
 
 @implementation AppDelegate

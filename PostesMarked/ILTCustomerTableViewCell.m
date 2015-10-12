@@ -7,6 +7,7 @@
 //
 
 #import "ILTCustomerTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ILTCustomerTableViewCell () 
 
@@ -22,7 +23,7 @@
 #pragma mark - set image and text in cell 
 
 - (void)setupWithItem:(ILTInstagramPoste *)item {
-    imageView.image = [item getImage];
+   [self.imageView sd_setImageWithURL:[NSURL URLWithString:[item retrurnUrlString]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     _textView.text = [item commentText];
 }
 

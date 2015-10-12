@@ -13,13 +13,6 @@
 
 @interface ILTNetworkConnection : NSObject <ILTDataProviderDelegate>
 
-#warning следующие два свойства не используются
-@property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, strong) NSURLConnection *tokenRequestConnection;
 @property (nonatomic, strong) ILTRepository *repository;
-#warning следующие три метода можно удалить из *.h файла
-- (NSString *) urlForAuthentification;
-- (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag;
-- (void)loadNextPage;
 
 @end

@@ -6,8 +6,6 @@
 //  Copyright © 2015 Konstantin Kolontay. All rights reserved.
 //
 
-#warning Добавьте префикс приложения в имя этого файла
-
 #define kBaseURL @"https://instagram.com/"
 #define kInstagramAPIBaseURL @"https://api.instagram.com"
 #define kAuthenticationURL @"oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&scope=likes+comments+basic"
