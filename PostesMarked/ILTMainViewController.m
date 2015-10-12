@@ -29,6 +29,7 @@
     _manager = [[ILTAccessTokenManager alloc]init];
     [_manager setupAccessToken:nil];
     [_manager setupNextPage:nil];
+    [_manager setupNextMaxId:nil];
     _textField.text = nil;
     _networkConnection = [[ILTNetworkConnection alloc] init];
 }

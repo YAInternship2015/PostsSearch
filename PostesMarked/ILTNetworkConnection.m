@@ -15,7 +15,6 @@
 @interface ILTNetworkConnection () 
 
 @property (nonatomic, retain) NSString *urlForAuthentification;
-@property (nonatomic, strong) NSString *nextMaxId;
 @property (nonatomic, weak) NSString *nextPage;
 @property (nonatomic, strong) ILTAccessTokenManager *manager;
 
@@ -54,14 +53,13 @@
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *serializedData = (NSDictionary *)responseObject;
-#warning используйте weakSelf внутри блоков вместо strong ссылки на self
         _nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
        [_manager setupNextPage:_nextPage];
         NSString *newNextMaxId = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_max_id"]];
-            if (![newNextMaxId isEqualToString:_nextMaxId]) {
+            if (![newNextMaxId isEqualToString:[_manager fetchNextMaxId]]) {
                 NSArray *data = [serializedData objectForKey:@"data"];
                 [_repository saveDataFromNetwork:data];
-                _nextMaxId = newNextMaxId;
+                [_manager setupNextPage: newNextMaxId];
             }
        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

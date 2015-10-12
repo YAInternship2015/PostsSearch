@@ -34,4 +34,16 @@
     return [[NSUserDefaults standardUserDefaults]objectForKey:@"accessToken"];
 }
 
+#pragma makr - get next max id
+
+- (NSString *)fetchNextMaxId {
+    return [[NSUserDefaults standardUserDefaults]objectForKey:@"nextMaxId"];
+}
+
+#pragma mark - setup next max id 
+
+- (void)setupNextMaxId:(NSString *)nextMaxId {
+    [[NSUserDefaults standardUserDefaults] setObject:nextMaxId forKey:@"nextMaxId"];
+}
+
 @end

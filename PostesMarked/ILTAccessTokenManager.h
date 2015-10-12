@@ -14,5 +14,7 @@
 - (void)setupAccessToken:(NSString *)accessToken;
 - (NSString *)fetchNextPage;
 - (NSString *)fetchaccessToken;
+- (NSString *)fetchNextMaxId;
+- (void)setupNextMaxId:(NSString *)nextMaxId;
 
 @end
