@@ -27,9 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _manager = [[ILTAccessTokenManager alloc]init];
-    [_manager setupAccessToken:nil];
-    [_manager setupNextPage:nil];
-    [_manager setupNextMaxId:nil];
+    [_manager setAccessToken:nil];
     _textField.text = nil;
     _networkConnection = [[ILTNetworkConnection alloc] init];
 }
@@ -37,7 +35,7 @@
 #pragma mark - started searching information 
 
 - (IBAction)startSearchTags:(UIButton *)sender {
-    if ([_manager fetchaccessToken]  == nil) {
+    if ([_manager accessToken]  == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
                                                         message: NSLocalizedString(@"Please, login to Instagram", nil)
                                                        delegate:nil

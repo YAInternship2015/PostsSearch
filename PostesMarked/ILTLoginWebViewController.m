@@ -88,7 +88,7 @@
         accessToken = [jsonData objectForKey:@"access_token"];
     }
     if (accessToken != nil) {
-        [_manager setupAccessToken:accessToken];
+        [_manager setAccessToken:accessToken];
     }
 }
 

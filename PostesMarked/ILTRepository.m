@@ -40,7 +40,6 @@
         ILTInstagramPoste *item = nil;
         if (itemExist == nil) {
             item = [ILTInstagramPoste MR_createEntityInContext:_context];
-            //[_itemsOfTag addObject:item];
         }
         else {
             item = itemExist;
@@ -52,7 +51,7 @@
 
 #pragma mark - get item of repository 
 
-- (ILTInstagramPoste *)memberOfItem:(NSIndexPath *)index {
+- (ILTInstagramPoste *)itemAtIndexPath:(NSIndexPath *)index {
     return [_fetchedResultsController objectAtIndexPath:index];
 }
 
@@ -73,7 +72,7 @@
 #pragma mark - get count members in repository
 
 - (NSUInteger)countOfItems {
-    return  [ILTInstagramPoste MR_countOfEntitiesWithContext:_context];
+    return  [[ILTInstagramPoste MR_findAll]count];
 }
 
 #pragma  mark - set delegate 

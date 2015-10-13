@@ -14,9 +14,9 @@
 
 @interface ILTNetworkConnection () 
 
-@property (nonatomic, retain) NSString *urlForAuthentification;
-@property (nonatomic, weak) NSString *nextPage;
+@property (nonatomic, strong) NSString *nextPage;
 @property (nonatomic, strong) ILTAccessTokenManager *manager;
+@property (nonatomic, strong) NSString *nextMaxId;
 
 @end
 
@@ -38,7 +38,7 @@
 
 - (void)recieveDataFromServer:(NSString *)urlServer tagForSearch:(NSString *)tag {
     if (urlServer == nil) {
-        urlServer = [NSString stringWithFormat:TAGREQUEST, tag, [_manager fetchaccessToken]];
+        urlServer = [NSString stringWithFormat:TAGREQUEST, tag, [_manager accessToken]];
         _nextPage = nil;
     }
     NSURL *urlRequest;
@@ -51,18 +51,16 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:urlRequest];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
-   [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *serializedData = (NSDictionary *)responseObject;
-        _nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
-       [_manager setupNextPage:_nextPage];
-        NSString *newNextMaxId = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_max_id"]];
-            if (![newNextMaxId isEqualToString:[_manager fetchNextMaxId]]) {
-                NSArray *data = [serializedData objectForKey:@"data"];
-                [_repository saveDataFromNetwork:data];
-                [_manager setupNextMaxId: newNextMaxId];
-            }
-       
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    __weak typeof(self) weakSelf = self;
+   [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {      NSDictionary *serializedData = (NSDictionary *)responseObject;
+       weakSelf.nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
+      NSString *newNextMaxId = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_max_id"]];
+       if (![newNextMaxId isEqualToString:_nextMaxId]) {
+          NSArray *data = [serializedData objectForKey:@"data"];
+          [weakSelf.repository saveDataFromNetwork:data];
+          weakSelf.nextMaxId = newNextMaxId;
+       }
+   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
                                                             message:NSLocalizedString([error localizedDescription], nil)
                                                            delegate:nil
@@ -76,7 +74,7 @@
 #pragma mark - load next page
 
 - (void)loadNextPage {
-    NSString *nextPage = [_manager fetchNextPage];
+    NSString *nextPage = _nextPage;
     if (nextPage != nil) {
         [self recieveDataFromServer:nextPage tagForSearch:nil];
     }

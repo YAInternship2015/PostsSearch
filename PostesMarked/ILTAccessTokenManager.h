@@ -10,11 +10,8 @@
 
 @interface ILTAccessTokenManager : NSObject
 
-- (void)setupNextPage:(NSString *)nextPage;
-- (void)setupAccessToken:(NSString *)accessToken;
-- (NSString *)fetchNextPage;
-- (NSString *)fetchaccessToken;
-- (NSString *)fetchNextMaxId;
-- (void)setupNextMaxId:(NSString *)nextMaxId;
+- (void)setAccessToken:(NSString *)accessToken;
+- (NSString *)accessToken;
+
 
 @end
