@@ -10,21 +10,16 @@
 
 @implementation ILTAccessTokenManager
 
-
-
 #pragma mark - setup access token 
 
 - (void)setAccessToken:(NSString *)accessToken {
-[[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:@"accessToken"];
+    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:@"accessToken"];
 }
-
 
 #pragma mark - get accessToken
 
 - (NSString *)accessToken {
     return [[NSUserDefaults standardUserDefaults]objectForKey:@"accessToken"];
 }
-
-
 
 @end

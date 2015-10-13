@@ -19,4 +19,5 @@
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index;
 - (void)loadNextPage;
 - (void)setFetchedResultsControllerDelegate:(id <NSFetchedResultsControllerDelegate>) delegateTable;
+
 @end

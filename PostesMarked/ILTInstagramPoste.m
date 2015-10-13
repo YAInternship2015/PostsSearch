@@ -8,11 +8,6 @@
 
 #import "ILTInstagramPoste.h"
 
-
-@interface  ILTInstagramPoste ()
-
-@end
-
 @implementation ILTInstagramPoste
 
 #pragma mark - fill data
