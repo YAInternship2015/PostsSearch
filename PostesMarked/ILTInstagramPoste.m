@@ -25,6 +25,7 @@
 
 #pragma mark - return Url images
 
+#warning а зачем этот метод нужен?))
 - (NSString *) retrurnUrlString {
     return self.imageURLString;
 }

@@ -73,6 +73,7 @@
 #pragma mark - get count members in repository
 
 - (NSUInteger)countOfItems {
+#warning здесь нужно обращаться к выборке fetchedResultsController, а не к базе напрямую. Если в выборке fetchedResultsController будет меньше элементов, чем в базе, приложение упадет при обращении к выборке fetchedResultsController по несуществующему indexPath
     return  [ILTInstagramPoste MR_countOfEntitiesWithContext:_context];
 }
 

@@ -51,7 +51,22 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:urlRequest];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+
+#warning так и не увидел weakSelf здесь. Проблема в том, что когда Вы пишете в блоке _nextPage - это по сути обращение к self.nextPage, то есть такое обращение увеличивает счетчик ссылок на объект self на 1. Так как блок захватывает контекст во время своего объявления, то уже после объявления блока значение этого счетчика увеличится. Вот что необходимо было написать:
+    
+//       __weak typeof(self) weakSelf = self;
    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//       NSDictionary *serializedData = (NSDictionary *)responseObject;
+//       weakSelf.nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
+//       [weakSelf.manager setupNextPage:weakSelf.nextPage];
+//       NSString *newNextMaxId = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_max_id"]];
+//       if (![newNextMaxId isEqualToString:[weakSelf.manager fetchNextMaxId]]) {
+//           NSArray *data = [serializedData objectForKey:@"data"];
+//           [weakSelf.repository saveDataFromNetwork:data];
+//           [weakSelf.manager setupNextMaxId: newNextMaxId];
+//       }
+       
+       
         NSDictionary *serializedData = (NSDictionary *)responseObject;
         _nextPage = [NSString stringWithFormat:@"%@",[serializedData valueForKeyPath:@"pagination.next_url"]];
        [_manager setupNextPage:_nextPage];
