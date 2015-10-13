@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "ILTNetworkConnection.h"
 
 @interface ILTLoginWebViewController : UIViewController 
 

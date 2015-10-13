@@ -23,11 +23,4 @@
     self.imageURLString = [dictionary valueForKeyPath:@"images.low_resolution.url"];
 }
 
-#pragma mark - return Url images
-
-#warning а зачем этот метод нужен?))
-- (NSString *) retrurnUrlString {
-    return self.imageURLString;
-}
-
 @end

@@ -23,7 +23,7 @@
 #pragma mark - set image and text in cell 
 
 - (void)setupWithItem:(ILTInstagramPoste *)item {
-   [self.imageView sd_setImageWithURL:[NSURL URLWithString:[item retrurnUrlString]] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+   [self.imageView sd_setImageWithURL:[NSURL URLWithString:item.imageURLString] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     _textView.text = [item commentText];
 }
 

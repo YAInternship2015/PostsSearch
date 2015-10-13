@@ -15,8 +15,7 @@
 @property (nonatomic, weak) id<ILTDataProviderDelegate> delegate;
 - (void)saveDataFromNetwork:(NSArray *)array;
 - (NSUInteger)countOfItems;
-#warning itemAtIndexPath:
-- (ILTInstagramPoste *)memberOfItem:(NSIndexPath *)index;
+- (ILTInstagramPoste *)itemAtIndexPath:(NSIndexPath *)index;
 - (void)deleteItemAtIndexPath:(NSIndexPath *)index;
 - (void)loadNextPage;
 - (void)setFetchedResultsControllerDelegate:(id <NSFetchedResultsControllerDelegate>) delegateTable;

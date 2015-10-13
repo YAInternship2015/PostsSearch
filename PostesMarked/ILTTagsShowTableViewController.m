@@ -40,7 +40,7 @@
 
 - (ILTCustomerTableViewCell *)tableView:(UITableView *)tableView
        cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ILTInstagramPoste *item = [_repository memberOfItem:indexPath];
+    ILTInstagramPoste *item = [_repository itemAtIndexPath:indexPath];
     ILTCustomerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell" forIndexPath:indexPath];
     [cell setupWithItem:item];
     return cell;
